@@ -1,31 +1,42 @@
-<h2>First things first. Where are you?</h2>
-<div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <p>Address</p>
-          <input name="address" type="text" class="validate">
-          <!-- <label for="address">Address</label> -->
+<h2 ng-show="view.inputLocation" class="text-center">First things first. Where are you?</h2>
+<h2 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h2>
+<div class="formClass">
+    <form name="searchForm">
+      <div class="row" ng-show="view.inputLocation">
+        <div class="form-group col-md-6">
+          <label for="address">Address</label>
+          <input name="address" type="text" class="form-control">
+
         </div>
-        <div class="input-field col s6">
-          <p>City</p>
-          <input placeholder="City" id="city" type="text" class="validate">
-          <!-- <label for="city">City</label> -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <p>State</p>
-          <input placeholder="State" id="state" type="text" class="validate">
-          <!-- <label for="state">State</label> -->
-        </div>
-        <div class="input-field col s6">
-          <p>Zip Code</p>
-          <input placeholder="Zip Code" id="zip" type="text" class="validate" length="5">
-          <!-- <label for="zip">Zip Code</label> -->
+        <div class="form-group col-md-6">
+          <label for="city">City</label>
+          <input placeholder="City" id="city" type="text" class="form-control">
+
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <div class="row" ng-show="view.inputLocation">
+        <div class="form-group col-md-6">
+          <label for="state">State</label>
+          <input placeholder="State" id="state" type="text" class="form-control">
+
+        </div>
+        <div class="form-group col-md-6">
+          <label for="zip">Zip Code</label>
+          <input placeholder="Zip Code" id="zip" type="text" class="form-control" length="5">
+
+        </div>
+      </div>
+      <!-- <div class="row" ng-show="view.inputTypeOfFood"> -->
+      <div class="row">
+        <!-- <input type="text"> -->
+        <div class="form-group col-md-12">
+          <select name="type" class="form-control">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="hi">Hi</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-info center-block" name="action" ng-show="view.inputLocation" ng-click="view.inputLocation = !view.inputLocation">Submit Location
       </button>
     </form>
   </div>
