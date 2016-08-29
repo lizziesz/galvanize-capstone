@@ -1,6 +1,6 @@
 var app = angular.module('decisionApp', ['ngRoute']);
 
-app.controller("DecisionController", ['$scope', function($scope) {
+app.controller("DecisionController", ['$scope', 'YelpAPIService', function($scope, YelpAPIService) {
   $scope.view = {};
   $scope.view.inputLocation = true;
 
@@ -32,7 +32,15 @@ app.controller("DecisionController", ['$scope', function($scope) {
 
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
-  
+
+  $scope.view.businesses = [];
+
+  $scope.view.searchYelp = function() {
+    YelpAPIService.searchYelp().then(function(data) {
+      console.log(data);
+    })
+  }
+
 }]);
 
 app.config(function($routeProvider){
