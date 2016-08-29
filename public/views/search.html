@@ -2,6 +2,7 @@
 <h2 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h2>
 <div class="formClass">
     <form name="searchForm">
+      <button type="button" class="btn btn-link center-block" ng-click="view.getLocation()">Get Current Location</button>
       <div class="row" ng-show="view.inputLocation">
         <div class="form-group col-md-6">
           <label for="address">Address</label>
