@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="decisionApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Decision Maker</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <script src="javascripts/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1 class="center-align">Decision Maker</h1>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo right">Logo</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="#">Sign Up/Log In</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Decide for Me!</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main ng-view>
+  </main>
+  <footer class="page-footer cyan darken-3">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2016 Copyright Lizzie
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
