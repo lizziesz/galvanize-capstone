@@ -1,0 +1,20 @@
+<h1 class="text-center">Sign In</h1>
+<div class="submitForm container">
+  <form ng-submit="view.signIn()" name="signinForm" class="userFormClass">
+    <div class="row" ng-show="view.inputLocation">
+      <div class="form-group col-md-12 signInput">
+        <p><strong>Username: </strong></p>
+        <input type="text" name="username" placeholder="Username" ng-model="signIn.username" required class="formInput form-control">
+        <p class="error" ng-show="signinForm.username.$dirty && signinrForm.username.$invalid">You must enter a username.</p>
+      </div>
+    </div>
+    <div class="row" ng-show="view.inputLocation">
+      <div class="form-group col-md-12 signInput">
+        <p><strong>Password: </strong></p>
+        <input type="password" name="password" placeholder="Password" ng-model="signIn.password" required class="formInput form-control">
+        <p class="error" ng-show="signinForm.password.$dirty && signinForm.password.$invalid">You must enter a password.</p>
+      </div>
+    </div>
+    <input type="submit" value="Sign In" class="submitButton">
+  </form>
+</div>
