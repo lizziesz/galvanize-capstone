@@ -1,0 +1,34 @@
+<h1 class="text-center">Sign Up</h1>
+<div class="submitForm container">
+  <form ng-submit="view.signUp()" name="userForm" class="userFormClass">
+    <div class="row" ng-show="view.inputLocation">
+      <div class="form-group col-md-12 signInput">
+        <p><strong>Please enter a username: </strong></p>
+        <input type="text" name="username" placeholder="Username" ng-model="usersForm.username" required class="formInput form-control">
+        <p class="error" ng-show="userForm.username.$dirty && userForm.username.$invalid">You must enter a username.</p>
+      </div>
+    </div>
+    <div class="row" ng-show="view.inputLocation">
+      <div class="form-group col-md-12">
+        <p><strong>Please enter a password: </strong></p>
+        <input type="password" name="password" placeholder="Password" ng-model="usersForm.password" required class="formInput form-control" ng-minlength=8>
+        <p class="error" ng-show="userForm.password.$dirty && userForm.password.$invalid">Your password is not long enough. Please enter a password of at least 8 characters.</p>
+      </div>
+    </div>
+    <div class="row" ng-show="view.inputLocation">
+      <div class="form-group col-md-12">
+        <p><strong>Please enter your first name: </strong></p>
+        <input type="text" name="firstname" placeholder="First Name" ng-model="usersForm.firstname" required class="formInput form-control">
+        <p class="error" ng-show="userForm.firstname.$dirty && userForm.firstname.$invalid">You must enter your first name.</p>
+      </div>
+    </div>
+    <div class="row" ng-show="view.inputLocation">
+      <div class="form-group col-md-12">
+        <p><strong>Please enter your last name: </strong></p>
+        <input type="text" name="lastname" placeholder="Last Name" ng-model="usersForm.lastname" required class="formInput form-control">
+        <p class="error" ng-show="userForm.lastname.$dirty && userForm.lastname.$invalid">You must enter your last name.</p>
+      </div>
+    </div>
+    <input type="submit" value="Sign Up" class="submitButton">
+  </form>
+</div>

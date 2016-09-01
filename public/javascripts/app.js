@@ -1,9 +1,16 @@
 var app = angular.module('decisionApp', ['ngRoute']);
 
-app.controller("DecisionController", ['$scope', 'YelpAPIService', function($scope, YelpAPIService) {
+app.directive('cpShowResults', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'views/results.html'
+  }
+})
+
+app.controller("DecisionController", ['$scope', 'YelpAPIService', '$timeout', '$http', function($scope, YelpAPIService, $timeout, $http) {
   $scope.view = {};
   $scope.view.inputLocation = true;
-
+  $scope.view.restaurants = [];
   $scope.view.changeInput = function(){
     $scope.view.inputLocation = false;
     $scope.view.inputTypeOfFood = true;
@@ -11,6 +18,8 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', function($scop
 
   $scope.view.getLocation = function() {
     console.log("Location Location");
+    // $scope.view.showLongAndLat = true;
+
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -24,6 +33,22 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', function($scop
       console.log('Latitude : ' + crd.latitude);
       console.log('Longitude: ' + crd.longitude);
       console.log('More or less ' + crd.accuracy + ' meters.');
+
+      $scope.view.latitude = crd.latitude;
+      $scope.view.longitude = crd.longitude;
+      console.log($scope.view.latitude);
+      $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + $scope.view.latitude + ',' + $scope.view.longitude + '&key=AIzaSyBG3ONRAzVaudSq-Hnz7_qE5AIMV5b_EQU').then(function(data) {
+        console.log(data);
+        var addressArray = data.data.results[0].formatted_address.split(',');
+        console.log(addressArray);
+        var stateZipArray = addressArray[2].split(' ');
+        console.log(stateZipArray);
+        $scope.view.address = addressArray[0];
+        $scope.view.city = addressArray[1].trim();
+        $scope.view.state = stateZipArray[1];
+        $scope.view.zip = stateZipArray[2];
+      })
+
     };
 
     function error(err) {
@@ -31,13 +56,49 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', function($scop
     };
 
     navigator.geolocation.getCurrentPosition(success, error, options);
+
   }
 
   $scope.view.businesses = [];
 
   $scope.view.searchYelp = function() {
-    YelpAPIService.searchYelp().then(function(data) {
-      console.log(data);
+    // $timeout(function(){
+      // $location.path('/eathere');
+    // }, 3000);
+
+      YelpAPIService.searchYelpCity($scope.view.city).then(function(data) {
+        function getRandomInt(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var randomNum = getRandomInt(0, 19);
+        console.log(randomNum);
+        console.log(data.data.businesses[randomNum].name);
+        console.log($scope.view.restaurants);
+        $scope.view.restaurants.push(data.data.businesses[randomNum]);
+        console.log($scope.view.restaurants);
+        $scope.view.inputTypeOfFood = false;
+        $scope.view.showResults = true;
+        // $location.path('/eathere');
+        // $scope.view.result = data.data.businesses[randomNum];
+        // console.log($scope.view.restaurants[0].name);
+      })
+
+  }
+
+  $scope.view.searchYelpAgain = function() {
+    YelpAPIService.searchYelpCity($scope.view.city).then(function(data) {
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      var randomNum = getRandomInt(0, 19);
+      console.log(randomNum);
+      console.log(data.data.businesses[randomNum].name);
+      console.log($scope.view.restaurants);
+      $scope.view.restaurants.pop();
+      $scope.view.restaurants.push(data.data.businesses[randomNum]);
+      console.log($scope.view.restaurants);
+      $scope.view.inputTypeOfFood = false;
+      $scope.view.showResults = true;
     })
   }
 
@@ -51,6 +112,18 @@ app.config(function($routeProvider){
     })
     .when('/decide', {
       templateUrl: 'views/search.html',
+      controller: "DecisionController"
+    })
+    .when('/eathere', {
+      templateUrl: 'views/results.html',
+      controller: "DecisionController"
+    })
+    .when('/signup', {
+      templateUrl: 'views/signup.html',
+      controller: "DecisionController"
+    })
+    .when('/signin', {
+      templateUrl: 'views/signin.html',
       controller: "DecisionController"
     })
 });

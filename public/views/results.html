@@ -1,0 +1,22 @@
+<div ng-show="view.showResults">
+  <h1 class="text-center">Here's where you should go eat!</h1>
+  <div ng-repeat="result in view.restaurants">
+    <h2 class="text-center">{{result.name}}</h2>
+    <img ng-src="{{result.image_url}}" alt="restaurant image" class="center-block">
+    <br>
+    <img ng-src="{{result.rating_img_url}}" alt="rating" class="center-block">
+    <div class="text-center" ng-repeat="category in result.categories">
+      <h5>{{category[0]}}</h5>
+    </div>
+    <p class="text-center"><strong>{{result.location.display_address[0]}}</strong></p>
+    <p class="text-center"><strong>{{result.location.display_address[1]}}</strong></p>
+    <p class="text-center"><strong>{{result.location.display_address[2]}}</strong></p>
+    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}}{{result.location.display_address[1]}}{{result.location.display_address[2]}}"><p class="text-center">Get directions!</p></a>
+    <p></p>
+    <p class="text-center">"{{result.snippet_text}}"</p>
+    <a href="{{result.url}}"><p class="text-center">Read more reviews on Yelp!</p></a>
+    <button class="btn btn-info center-block" type="submit" ng-click="view.searchYelpAgain()">Not satisfied? Try again!
+    </button>
+  </div>
+
+</div>
