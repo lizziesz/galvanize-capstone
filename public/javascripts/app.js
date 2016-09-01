@@ -1,4 +1,4 @@
-var app = angular.module('decisionApp', ['ngRoute']);
+var app = angular.module('decisionApp', ['ngRoute', 'angular-spinkit']);
 
 app.directive('cpShowResults', function(){
   return {
@@ -6,6 +6,28 @@ app.directive('cpShowResults', function(){
     templateUrl: 'views/results.html'
   }
 })
+
+app.directive('routeLoadingIndicator', function($rootScope) {
+  return {
+    restrict: 'E',
+    template: "<div ng-show='isRouteLoading' class='loading-indicator'>" +
+    "<div class='loading-indicator-body'>" +
+    "<h3 class='loading-title'>Loading...</h3>" +
+    "<div class='spinner'><rotating-plane-spinner></rotating-plane-spinner></div>" +
+    "</div>" +
+    "</div>",
+    replace: true,
+    link: function(scope, elem, attrs) {
+      scope.isRouteLoading = false;
+      $rootScope.$on('$routeChangeStart', function(){
+        scope.isRouteLoading = true;
+      });
+      $rootScope.$on('$routeChangeSuccess', function(){
+        scope.isRouteLoading = false;
+      });
+    }
+  }
+});
 
 app.controller("DecisionController", ['$scope', 'YelpAPIService', '$timeout', '$http', function($scope, YelpAPIService, $timeout, $http) {
   $scope.view = {};
@@ -17,6 +39,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$timeout', '$
   }
 
   $scope.view.getLocation = function() {
+    $scope.view.loading = true;
     console.log("Location Location");
     // $scope.view.showLongAndLat = true;
 
@@ -47,6 +70,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$timeout', '$
         $scope.view.city = addressArray[1].trim();
         $scope.view.state = stateZipArray[1];
         $scope.view.zip = stateZipArray[2];
+        $scope.view.loading = false;
       })
 
     };
