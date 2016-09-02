@@ -23,7 +23,7 @@ app.config(function($routeProvider){
     })
     .when('/signup', {
       templateUrl: 'views/signup.html',
-      controller: "DecisionController"
+      controller: "SignUpController"
     })
     .when('/signin', {
       templateUrl: 'views/signin.html',
