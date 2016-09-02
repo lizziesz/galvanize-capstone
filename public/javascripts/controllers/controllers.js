@@ -2,11 +2,16 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', funct
   $scope.view = {};
   $scope.view.inputLocation = true;
   $scope.view.restaurants = [];
+
   $scope.view.changeInput = function(){
     $scope.view.inputLocation = false;
     $scope.view.inputTypeOfFood = true;
     $scope.view.locationConfirmed = false;
   }
+
+  YelpAPIService.getUsers().then(function(data) {
+    console.log(data);
+  });
 
   $scope.view.getLocation = function() {
     $scope.view.loading = true;
@@ -156,3 +161,26 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', funct
   }
 
 }]);
+
+app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$location', '$window', function($scope, $http, SignUpService, $location, $window) {
+  $scope.view = {};
+
+  SignUpService.getUsers().then(function(data) {
+    $scope.view.users = data.data;
+    console.log($scope.view.users);
+  })
+
+  $scope.view.signUp = function() {
+    console.log($scope.signUpForm.username);
+    SignUpService.signUp($scope.view.users, $scope.signUpForm.username, $scope.signUpForm.password, $scope.signUpForm.first_name, $scope.signUpForm.last_name)
+    .then(function(res) {
+      if(res.data.errors){
+        $scope.view.error = res.data.errors;
+      } else {
+        localStorage.jwt = res.data.token;
+        $location.path('/');
+        $window.location.reload();
+      }
+    });
+  }
+}])
