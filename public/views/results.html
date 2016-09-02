@@ -1,4 +1,4 @@
-<div ng-show="view.showResults">
+<div ng-show="view.showResults" class="resultsSection">
   <h1 class="text-center">Here's where you should go eat!</h1>
   <div ng-repeat="result in view.restaurants">
     <h2 class="text-center">{{result.name}}</h2>
@@ -11,7 +11,7 @@
     <p class="text-center"><strong>{{result.location.display_address[0]}}</strong></p>
     <p class="text-center"><strong>{{result.location.display_address[1]}}</strong></p>
     <p class="text-center"><strong>{{result.location.display_address[2]}}</strong></p>
-    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}}{{result.location.display_address[1]}}{{result.location.display_address[2]}}"><p class="text-center">Get directions!</p></a>
+    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}}{{result.location.display_address[1]}}{{result.location.display_address[2]}}" target="_blank"><p class="text-center">Get directions!</p></a>
     <p></p>
     <p class="text-center">"{{result.snippet_text}}"</p>
     <a href="{{result.url}}"><p class="text-center">Read more reviews on Yelp!</p></a>

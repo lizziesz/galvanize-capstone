@@ -90,6 +90,12 @@ input.ng-dirty.ng-invalid {
   color: red;
 }
 
+/*Results Page*/
+
+.resultsSection {
+  margin-bottom: 50px;
+}
+
 /*Footer Styling*/
 
 footer {

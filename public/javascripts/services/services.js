@@ -17,8 +17,8 @@ angular.module("decisionApp")
       searchYelp: function(latitude, longitude) {
         return $http.get('/api/yelp/' + latitude + '/' + longitude);
       },
-      searchYelpCity: function(city) {
-        return $http.get('/api/yelp/' + city);
+      searchYelpCity: function(city, state, category) {
+        return $http.get('/api/yelp/' + city + '/' + state + '/' + category);
       }
     }
   })
