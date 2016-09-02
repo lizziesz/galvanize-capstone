@@ -23,7 +23,7 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
 </head>
 <body>
-  <header>
+  <header ng-controller="NavigationController">
     <h1 class="text-center">Decision Maker</h1>
     <nav>
       <div class="navbar navbar-default">
@@ -39,13 +39,19 @@
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="#/signup">Sign Up</a></li>
-              <li><a href="#/signin">Sign In</a></li>
+              <li><a href="#/signup" ng-show="!user">Sign Up</a></li>
+              <li><a href="#/signin" ng-show="!user">Sign In</a></li>
+              <li><a href="#/" ng-show="user" ng-click="view.signOut()">Sign Out</a></li>
               <li><a href="#/">About</a></li>
               <li><a href="#/decide">Decide for Me!</a></li>
             </ul>
+            <p class="navbar-text navbar-right" ng-show="!user">Hello, Guest</p>
+            <p class="navbar-text navbar-right" ng-show="user">Hello, {{user.username}}</p>
           </div>
         </div>
+        <!-- <div class="nav navbar-nav navbar-right">
+
+        </div> -->
       </div>
     </nav>
   </header>

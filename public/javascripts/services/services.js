@@ -35,6 +35,24 @@ angular.module("decisionApp")
         newUser.last_name = last_name;
         array.push(newUser);
         return $http.post('/api/signup', newUser);
+      },
+      signIn: function(username, password) {
+        var user = {};
+        user.username = username.toLowerCase();
+        user.password = password;
+        return $http.post('/api/signin', user);
       }
     }
   })
+
+app.service("DecisionInterceptor", function DecisionInterceptor() {
+  return {
+    request: function(config){
+      // console.log(localStorage.jwt);
+      if (localStorage.jwt) {
+        config.headers.Authorization = 'Bearer ' + localStorage.jwt;
+      }
+      return config;
+    }
+  }
+})

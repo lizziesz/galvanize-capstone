@@ -7,7 +7,8 @@ app.directive('cpShowResults', function(){
   }
 })
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $httpProvider){
+  $httpProvider.interceptors.push('DecisionInterceptor');
   $routeProvider
     .when('/', {
       templateUrl: 'views/home.html',
@@ -27,6 +28,14 @@ app.config(function($routeProvider){
     })
     .when('/signin', {
       templateUrl: 'views/signin.html',
-      controller: "DecisionController"
+      controller: "SignUpController"
     })
+});
+
+app.run(function($rootScope, $location) {
+
+  if (localStorage.jwt) {
+    $rootScope.user = jwt_decode(localStorage.jwt);
+    console.log($rootScope.user);
+  }
 });
