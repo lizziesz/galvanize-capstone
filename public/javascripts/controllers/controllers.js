@@ -5,6 +5,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', funct
   $scope.view.changeInput = function(){
     $scope.view.inputLocation = false;
     $scope.view.inputTypeOfFood = true;
+    $scope.view.locationConfirmed = false;
   }
 
   $scope.view.getLocation = function() {
