@@ -1,3 +1,15 @@
+app.controller("NavigationController", ['$scope', '$http', '$window', function($scope, $http, $window) {
+
+  $scope.view = {};
+
+  $scope.view.signOut = function() {
+    console.log("HI");
+    localStorage.clear();
+    $window.location.reload();
+  }
+
+}])
+
 app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', function($scope, YelpAPIService, $http) {
   $scope.view = {};
   $scope.view.inputLocation = true;
@@ -183,4 +195,21 @@ app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$locati
       }
     });
   }
+
+  $scope.view.signIn = function() {
+    $scope.view = {};
+
+    SignUpService.signIn($scope.signInForm.username, $scope.signInForm.password)
+      .then(function(res) {
+        if(res.data.errors) {
+        $scope.view.error = res.data.errors;
+      }
+      else {
+        localStorage.jwt = res.data.token;
+        $location.path('/');
+        $window.location.reload();
+      }
+  })
+} 
+
 }])

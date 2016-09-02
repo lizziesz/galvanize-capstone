@@ -113,5 +113,30 @@ router.post('/api/signup', function(req, res, next) {
     })
 });
 
+router.post('/api/signin', function(req, res, next) {
+  knex('users')
+  .where({
+    username: req.body.username
+  })
+  .first()
+  .then(function(data) {
+    if(!data) {
+      res.json({errors: 'username or password is incorrect'})
+    }
+    else if(bcrypt.compareSync(req.body.password, data.password)) {
+      token = jwt.sign({ id: data.id, username: data.username, is_admin: data.is_admin }, process.env.SECRET);
+      res.json({token:token});
+      console.log("token token: " + token);
+      // res.redirect('/bikes');
+    } else{
+      console.log('username or password is incorrect');
+      res.json({errors: 'username or password is incorrect'});
+    }
+  }).catch(function(err) {
+    console.log(err);
+    next(err)
+  })
+})
+
 
 module.exports = router;
