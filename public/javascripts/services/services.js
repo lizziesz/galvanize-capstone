@@ -48,10 +48,11 @@ angular.module("decisionApp")
 app.service("DecisionInterceptor", function DecisionInterceptor() {
   return {
     request: function(config){
-      // console.log(localStorage.jwt);
-      if (localStorage.jwt) {
+      if (localStorage.jwt && config.url.indexOf('googleapis') === -1) {
         config.headers.Authorization = 'Bearer ' + localStorage.jwt;
       }
+
+
       return config;
     }
   }
