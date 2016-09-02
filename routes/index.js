@@ -3,7 +3,31 @@ var express = require('express');
 var router = express.Router();
 var oauthSignature = require('oauth-signature');
 var yelp = require("node-yelp");
-var knex = require("knex");
+var knex = require("../db/knex");
+var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+var bearerToken = require('express-bearer-token');
+var jwtDecode = require('jwt-decode');
+var token;
+var errors;
+
+function protect(req,res,next) {
+  // var decoded = jwtDecode(req.token);
+  // console.log(decoded);
+  // console.log("REQ.JWT: " + req.token);
+  jwt.verify(req.token, process.env.SECRET, function (err,decoded) {
+    if (!err) {
+
+      next();
+    } else {
+      res.status(400).send('Bad Request');
+    }
+  });
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -49,6 +73,45 @@ router.get('/api/yelp/:city/:state/:category', function(req, res, next) {
     console.log("ERROR" + error);
     console.log(city);
   })
-})
+});
+
+router.get('/api/users', function(req, res, next) {
+  // res.json("['hi', 'ivy']")
+  knex('users').then(function(data) {
+    res.json(data);
+  });
+});
+
+router.post('/api/signup', function(req, res, next) {
+  var password = bcrypt.hashSync(req.body.password, 8);
+
+  knex('users')
+    .where({
+      username: req.body.username
+    })
+    .then(function(data) {
+      if(data.length > 0) {
+        res.json({errors: "username is already taken"});
+      }
+      else {
+        knex('users')
+        .insert({
+          username: req.body.username,
+          password: password,
+          first_name: capitalizeFirstLetter(req.body.first_name),
+          last_name: capitalizeFirstLetter(req.body.last_name),
+          is_admin: false
+        }).returning("*")
+        .then(function(user) {
+          token = jwt.sign({ id: user[0].id, username: user[0].username, is_admin: user[0].is_admin}, process.env.SECRET);
+          console.log(token);
+          res.json({token:token});
+        }).catch(function(err) {
+          console.log(err);
+        })
+      }
+    })
+});
+
 
 module.exports = router;

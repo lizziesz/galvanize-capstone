@@ -12,6 +12,7 @@
       </div>
 
       <h3 class="text-center" ng-show="view.inputLocation">OR</h3>
+      
       <div class="row" ng-show="view.inputLocation">
         <div class="form-group col-md-6">
           <label for="address">Address</label>
@@ -32,9 +33,8 @@
           <input id="zip" type="text" class="form-control" ng-model="view.zip">
         </div>
       </div>
-      <!-- <div class="row" ng-show="view.inputTypeOfFood"> -->
+
       <div class="row text-left" ng-show="view.inputTypeOfFood">
-        <!-- <input type="text"> -->
         <div class="radio col-md-12 text-center">
           <label>
             <input type="radio" name="category" value= '' ng-model="view.anything">Anything
