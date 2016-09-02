@@ -114,9 +114,6 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', funct
       if($scope.view.pizza) {
         $scope.view.category = 'pizza';
       }
-      if($scope.view.pubfood) {
-        $scope.view.category = 'pubfood';
-      }
       if($scope.view.salad) {
         $scope.view.category = 'salad';
       }
@@ -210,6 +207,6 @@ app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$locati
         $window.location.reload();
       }
   })
-} 
+}
 
 }])
