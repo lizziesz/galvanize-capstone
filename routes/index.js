@@ -10,38 +10,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/api/yelp/:latitude/:longitude', function(req, res, next) {
-  var latitude = req.params.latitude;
-  var longitude = req.params.longitude;
-  var client = yelp.createClient({
-    oauth: {
-      "consumer_key": process.env.oauth_consumer_key,
-      "consumer_secret": process.env.consumerSecret,
-      "token": process.env.oauth_token,
-      "token_secret": process.env.tokenSecret
-    },
-
-    // Optional settings:
-    httpClient: {
-      maxSockets: 25  // ~> Default is 10
-    }
-  });
-  client.search({
-    terms: "food",
-    // location: "Denver"
-    cll: latitude,longitude
-  }).then(function (data) {
-    var businesses = data.businesses;
-    var location = data.region;
-    res.json(data);
-    // ...
-  }).catch(function(error) {
-    console.log(error);
-  })
-})
-
-router.get('/api/yelp/:city', function(req, res, next) {
+router.get('/api/yelp/:city/:state/:category', function(req, res, next) {
+  // console.log("STATE" + req.params.state);
   var city = req.params.city;
+  console.log(city);
+  var state = req.params.state;
+  if(req.params.category === 'undefined') {
+    category = '';
+  }
+  else {
+    category = req.params.category;
+  }
+
+  // var location = city + '+' + state;
   var client = yelp.createClient({
     oauth: {
       "consumer_key": process.env.oauth_consumer_key,
@@ -57,14 +38,16 @@ router.get('/api/yelp/:city', function(req, res, next) {
   });
   client.search({
     terms: "restaurants",
-    location: city
+    location: city + state,
+    category_filter: category
   }).then(function (data) {
     var businesses = data.businesses;
     var location = data.region;
     res.json(data);
     // ...
   }).catch(function(error) {
-    console.log(error);
+    console.log("ERROR" + error);
+    console.log(city);
   })
 })
 
