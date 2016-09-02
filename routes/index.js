@@ -108,6 +108,7 @@ router.post('/api/signup', function(req, res, next) {
           res.json({token:token});
         }).catch(function(err) {
           console.log(err);
+          res.json({errors: "There was an error"});
         })
       }
     })
