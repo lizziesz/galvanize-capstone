@@ -19,6 +19,18 @@ angular.module("decisionApp")
       },
       getUsers: function() {
         return $http.get('/api/users');
+      },
+      addPlace: function(user_id, name, image, address_line_1, city, state, zip, yelp_url) {
+        var newPlace = {};
+        newPlace.user_id = user_id;
+        newPlace.name = name;
+        newPlace.image = image;
+        newPlace.address_line_1 = address_line_1;
+        newPlace.city = city;
+        newPlace.state = state;
+        newPlace.zip = zip;
+        newPlace.yelp_url = yelp_url;
+        return $http.post('/api/places', newPlace)
       }
     }
   })
@@ -44,6 +56,13 @@ angular.module("decisionApp")
       }
     }
   })
+  .factory("DashboardService", function($http) {
+    return {
+      getPlaces: function(id) {
+        return $http.get('/api/places/' + id);
+      }
+    }
+  })
 
 app.service("DecisionInterceptor", function DecisionInterceptor() {
   return {
@@ -51,8 +70,6 @@ app.service("DecisionInterceptor", function DecisionInterceptor() {
       if (localStorage.jwt && config.url.indexOf('googleapis') === -1) {
         config.headers.Authorization = 'Bearer ' + localStorage.jwt;
       }
-
-
       return config;
     }
   }
