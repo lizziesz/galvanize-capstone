@@ -165,7 +165,8 @@ router.post('/api/places', function(req, res, next) {
       city: req.body.city,
       state: req.body.state,
       zip: req.body.zip,
-      yelp_url: req.body.yelp_url
+      yelp_url: req.body.yelp_url,
+      is_favorite: false
     }).then(function(data) {
       res.redirect('/');
     });
@@ -179,6 +180,31 @@ router.get('/api/places/:id', function(req, res, next) {
   })
   .then(function(data) {
     res.json(data);
+  });
+});
+
+router.post('/api/favorites/:id', function(req, res, next) {
+  console.log(req.params.id);
+  knex('places')
+  .where({
+    id: req.params.id
+  })
+  .update({
+    is_favorite: true
+  }).then(function(){
+    res.redirect('/');
+  });
+});
+
+router.post('/api/removefavorite/:id', function(req, res, next) {
+  knex('places')
+  .where({
+    id: req.params.id
+  })
+  .update({
+    is_favorite: false
+  }).then(function(){
+    res.redirect('/');
   });
 });
 
