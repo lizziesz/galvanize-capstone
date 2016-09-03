@@ -60,6 +60,12 @@ angular.module("decisionApp")
     return {
       getPlaces: function(id) {
         return $http.get('/api/places/' + id);
+      },
+      addFavorite: function(place_id) {
+        return $http.post('/api/favorites/' + place_id);
+      },
+      removeFavorite: function(place_id) {
+        return $http.post('/api/removefavorite/' + place_id);
       }
     }
   })

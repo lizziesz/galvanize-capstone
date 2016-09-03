@@ -238,4 +238,13 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
     $scope.view.userPlaces = data.data;
   });
 
+  $scope.view.addFavorite = function(place_id) {
+    console.log("FAVE FAVE FAVE");
+    DashboardService.addFavorite(place_id);
+  }
+
+  $scope.view.removeFavorite = function(place_id) {
+    DashboardService.removeFavorite(place_id);
+  }
+
 }]);

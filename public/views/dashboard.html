@@ -1,20 +1,35 @@
 <h2 class="text-center">{{user.first_name}}'s Dashboard</h2>
-<h4 class="text-center" ng-click="view.showPlaces = !view.showPlaces"><i class="fa fa-plus fa-1x" aria-hidden="true"></i> Places I've Been</h4>
+<h4 class="text-center" ng-click="view.showPlaces = !view.showPlaces"><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show=!view.showPlaces></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.showPlaces"></i> Places I've Been</h4>
 <div class="table-responsive" ng-show="view.showPlaces">
   <table class="table table-striped">
     <tr ng-repeat="place in view.userPlaces">
       <td>
         <ul class="list-group text-center">
-          <li><strong>{{place.name}}</strong></li>
+          <li><strong><i class="fa fa-star" aria-hidden="true" ng-show="place.is_favorite"></i> {{place.name}}</strong></li>
           <li><img ng-src="{{place.image}}" alt="Restaurant"></li>
           <li>{{place.address_line_1}}</li>
           <li>{{place.city}}, {{place.state}} {{place.zip}}</li>
           <li><a href="https://www.google.com/maps/dir//{{place.address_line_1}} {{place.city}} {{place.state}} {{place.zip}}" target="_blank">Get Directions</a></li>
           <li><a href="{{place.yelp_url}}" target="_blank">Go to the Yelp Page</a></li>
-          <li><button class="btn btn-success" ng-click="addToFavorites(place.id, place.user_id)"><i class="fa fa-star" aria-hidden="true"></i> Mark as Favorite</button></li>
+          <li ng-show="!place.is_favorite"><button class="btn btn-success" ng-click="place.is_favorite = !place.is_favorite; view.addFavorite(place.id)"><i class="fa fa-star" aria-hidden="true"></i> Mark as Favorite</button></li>
         </ul>
       </td>
     </tr>
   </table>
 </div>
-<h4 class="text-center" ng-click="view.showFavorites = !view.showFavorites"><i class="fa fa-plus fa-1x" aria-hidden="true"></i> Favorites</h4>
+<h4 class="text-center" ng-click="view.showFavorites = !view.showFavorites"><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show="!view.showFavorites"></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.showFavorites"></i> Favorites</h4>
+<table class="table table-striped" ng-show="view.showFavorites">
+  <tr ng-repeat="place in view.userPlaces">
+    <td ng-show="place.is_favorite">
+      <ul class="list-group text-center">
+        <li><strong>{{place.name}}</strong></li>
+        <li><img ng-src="{{place.image}}" alt="Restaurant"></li>
+        <li>{{place.address_line_1}}</li>
+        <li>{{place.city}}, {{place.state}} {{place.zip}}</li>
+        <li><a href="https://www.google.com/maps/dir//{{place.address_line_1}} {{place.city}} {{place.state}} {{place.zip}}" target="_blank">Get Directions</a></li>
+        <li><a href="{{place.yelp_url}}" target="_blank">Go to the Yelp Page</a></li>
+        <li><button class="btn btn-danger" ng-click="place.is_favorite = !place.is_favorite; view.removeFavorite(place.id)"><i class="fa fa-times" aria-hidden="true"></i> Remove From Favorites</button></li>
+      </ul>
+    </td>
+  </tr>
+</table>
