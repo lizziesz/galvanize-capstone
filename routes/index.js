@@ -103,7 +103,7 @@ router.post('/api/signup', function(req, res, next) {
           is_admin: false
         }).returning("*")
         .then(function(user) {
-          token = jwt.sign({ id: user[0].id, username: user[0].username, is_admin: user[0].is_admin}, process.env.SECRET);
+          token = jwt.sign({ id: user[0].id, username: user[0].username, is_admin: user[0].is_admin, first_name: user[0].first_name}, process.env.SECRET);
           console.log(token);
           res.json({token:token});
         }).catch(function(err) {
@@ -125,7 +125,7 @@ router.post('/api/signin', function(req, res, next) {
       res.json({errors: 'username or password is incorrect'})
     }
     else if(bcrypt.compareSync(req.body.password, data.password)) {
-      token = jwt.sign({ id: data.id, username: data.username, is_admin: data.is_admin }, process.env.SECRET);
+      token = jwt.sign({ id: data.id, username: data.username, is_admin: data.is_admin, first_name: data.first_name }, process.env.SECRET);
       res.json({token:token});
       console.log("token token: " + token);
       // res.redirect('/bikes');
@@ -137,7 +137,49 @@ router.post('/api/signin', function(req, res, next) {
     console.log(err);
     next(err)
   })
-})
+});
 
+router.get('/api/places', function(req, res, next) {
+  knex('places').then(function(data) {
+    res.json(data);
+  });
+});
+
+router.post('/api/places', function(req, res, next) {
+  knex('places')
+  .where({
+    user_id: req.body.user_id
+  })
+  .then(function(data) {
+    console.log(data);
+    for(var i=0; i<data.length; i++) {
+      if(data[i].yelp_url === req.body.yelp_url) {
+        return "Already there";
+      }
+    }
+    knex('places').insert({
+      user_id: req.body.user_id,
+      name: req.body.name,
+      image: req.body.image,
+      address_line_1: req.body.address_line_1,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      yelp_url: req.body.yelp_url
+    }).then(function(data) {
+      res.redirect('/');
+    });
+  });
+});
+
+router.get('/api/places/:id', function(req, res, next) {
+  knex('places')
+  .where({
+    user_id: req.params.id
+  })
+  .then(function(data) {
+    res.json(data);
+  });
+});
 
 module.exports = router;

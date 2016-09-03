@@ -15,8 +15,8 @@
     <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}}{{result.location.display_address[1]}}" target="_blank" ng-if="!result.location.display_address[2]"><p class="text-center">Get directions!</p></a>
     <p></p>
     <p class="text-center">"{{result.snippet_text}}"</p>
-    <a href="{{result.url}}"><p class="text-center">Read more reviews on Yelp!</p></a>
-    <button class="btn btn-warning center-block" ng-click="view.addRestaurant()" ng-show="user">I'm going here!</button>
+    <a href="{{result.url}}" target="_blank"><p class="text-center">Read more reviews on Yelp!</p></a>
+    <button class="btn btn-warning center-block"  ng-if="!result.location.display_address[2]" ng-click="view.addRestaurant(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.url)" ng-show="user">I'm going here!</button>
     <button class="btn btn-info center-block" type="submit" ng-click="view.searchYelpAgain()">Not satisfied? Try again!
     </button>
     <p class="text-center">Results powered by: <span><img src="./images/yelp/yelp-logo-small.png" alt="Yelp"></span></p>

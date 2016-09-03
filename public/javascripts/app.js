@@ -30,6 +30,10 @@ app.config(function($routeProvider, $httpProvider){
       templateUrl: 'views/signin.html',
       controller: "SignUpController"
     })
+    .when('/dashboard/:id', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'DashboardController'
+    })
 });
 
 app.run(function($rootScope, $location) {

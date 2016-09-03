@@ -10,7 +10,7 @@ app.controller("NavigationController", ['$scope', '$http', '$window', function($
 
 }])
 
-app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', function($scope, YelpAPIService, $http) {
+app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$location', function($scope, YelpAPIService, $http, $location) {
   $scope.view = {};
   $scope.view.inputLocation = true;
   $scope.view.restaurants = [];
@@ -169,6 +169,23 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', funct
     })
   }
 
+  $scope.view.addRestaurant = function(id, name, image, address1, address2, yelp_url) {
+    console.log(address1);
+    console.log(address2);
+    var address2Array = address2.split(' ');
+    console.log(address2Array);
+    var city = address2Array[0].substring(0, address2Array[0].length - 1);
+    var user_id = id;
+    var name = name;
+    var image = image;
+    var address_line_1 = address1;
+    var state = address2Array[1];
+    var zip = address2Array[2];
+    var yelp_url = yelp_url;
+    YelpAPIService.addPlace(user_id, name, image, address_line_1, city, state, zip, yelp_url);
+    $location.path('/dashboard/user_id');
+  }
+
 }]);
 
 app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$location', '$window', function($scope, $http, SignUpService, $location, $window) {
@@ -209,4 +226,15 @@ app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$locati
   })
 }
 
-}])
+}]);
+
+app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'DashboardService', function($scope, $http, $routeParams, DashboardService) {
+  $scope.view = {};
+  console.log($routeParams.id);
+  DashboardService.getPlaces($routeParams.id).then(function(data) {
+    console.log(data);
+    console.log(data.data);
+    $scope.view.userPlaces = data.data;
+  });
+
+}]);
