@@ -10,7 +10,7 @@ app.controller("NavigationController", ['$scope', '$http', '$window', function($
 
 }])
 
-app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$location', function($scope, YelpAPIService, $http, $location) {
+app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$location', '$window', function($scope, YelpAPIService, $http, $location, $window) {
   $scope.view = {};
   $scope.view.inputLocation = true;
   $scope.view.restaurants = [];
@@ -183,7 +183,8 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
     var zip = address2Array[2];
     var yelp_url = yelp_url;
     YelpAPIService.addPlace(user_id, name, image, address_line_1, city, state, zip, yelp_url);
-    $location.path('/dashboard/user_id');
+    $location.path('/dashboard/' + user_id);
+    $window.location.reload();
   }
 
 }]);
