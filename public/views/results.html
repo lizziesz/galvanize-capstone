@@ -1,5 +1,10 @@
 <div ng-show="view.showResults" class="resultsSection">
   <h1 class="text-center">Here's where you should go eat!</h1>
+  <div ng-show="view.errorMessage">
+    <p class="text-center">No restaurants fit your search criteria! Try widening your search radius?</p>
+    <button class="btn btn-link center-block" ng-click="view.startOver()">Click here to try again!</button>
+  </div>
+
   <div ng-repeat="result in view.restaurants">
     <h2 class="text-center">{{result.name}}</h2>
     <img ng-src="{{result.image_url}}" alt="restaurant image" class="center-block">
