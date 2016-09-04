@@ -34,6 +34,10 @@ app.config(function($routeProvider, $httpProvider){
       templateUrl: 'views/dashboard.html',
       controller: 'DashboardController'
     })
+    .when('/decide/favorites/:id', {
+      templateUrl: 'views/searchfave.html',
+      controller: 'FavoriteController'
+    })
 });
 
 app.run(function($rootScope, $location) {

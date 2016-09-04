@@ -31,6 +31,19 @@ angular.module("decisionApp")
         newPlace.zip = zip;
         newPlace.yelp_url = yelp_url;
         return $http.post('/api/places', newPlace)
+      },
+      addPlaceTwo: function(user_id, name, image, address_line_1, address_line_2, city, state, zip, yelp_url){
+        var newPlace = {};
+        newPlace.user_id = user_id;
+        newPlace.name = name;
+        newPlace.image = image;
+        newPlace.address_line_1 = address_line_1;
+        newPlace.address_line_2 = address_line_2;
+        newPlace.city = city;
+        newPlace.state = state;
+        newPlace.zip = zip;
+        newPlace.yelp_url = yelp_url;
+        return $http.post('/api/placestwo', newPlace);
       }
     }
   })
@@ -66,6 +79,13 @@ angular.module("decisionApp")
       },
       removeFavorite: function(place_id) {
         return $http.post('/api/removefavorite/' + place_id);
+      }
+    }
+  })
+  .factory("FavoriteService", function($http) {
+    return {
+      getFaves: function(id) {
+        return $http.get('/api/faves/' + id);
       }
     }
   })
