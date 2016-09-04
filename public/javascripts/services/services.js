@@ -14,8 +14,17 @@ function randomString(length, chars) {
 angular.module("decisionApp")
   .factory("YelpAPIService", function($http) {
     return {
-      searchYelpCity: function(city, state, category) {
-        return $http.get('/api/yelp/' + city + '/' + state + '/' + category);
+      searchYelpCity: function(city, state, radius, category) {
+        return $http.get('/api/yelp/' + city + '/' + state + '/' + radius + '/' + category);
+      },
+      searchYelp: function(city, state, category) {
+        return $http.get('/api/yelp2/' + city + '/' + state + '/' + category);
+      },
+      searchYelpLat: function(city, state, latitude, longitude, radius, category) {
+        return $http.get('/api/yelp3/' + city + '/' + state + '/' + latitude + '/' + longitude + '/' + radius + '/' + category);
+      },
+      searchYelpLatNoRad: function(city, state, latitude, longitude, category) {
+        return $http.get('/api/yelp4/' + city + '/' + state + '/' + latitude + '/' + longitude + '/' + category);
       },
       getUsers: function() {
         return $http.get('/api/users');

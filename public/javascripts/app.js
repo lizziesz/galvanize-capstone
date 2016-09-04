@@ -18,10 +18,6 @@ app.config(function($routeProvider, $httpProvider){
       templateUrl: 'views/search.html',
       controller: "DecisionController"
     })
-    .when('/eathere', {
-      templateUrl: 'views/results.html',
-      controller: "DecisionController"
-    })
     .when('/signup', {
       templateUrl: 'views/signup.html',
       controller: "SignUpController"
