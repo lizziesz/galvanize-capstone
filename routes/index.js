@@ -34,8 +34,53 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/api/yelp/:city/:state/:category', function(req, res, next) {
+router.get('/api/yelp/:city/:state/:radius/:category', function(req, res, next) {
   // console.log("STATE" + req.params.state);
+  console.log("YELP1");
+  var city = req.params.city;
+  console.log(city);
+  var state = req.params.state;
+  var radius = req.params.radius;
+  if(req.params.category === 'undefined') {
+    category = '';
+  }
+  else {
+    category = req.params.category;
+  }
+
+  // var location = city + '+' + state;
+  var client = yelp.createClient({
+    oauth: {
+      "consumer_key": process.env.oauth_consumer_key,
+      "consumer_secret": process.env.consumerSecret,
+      "token": process.env.oauth_token,
+      "token_secret": process.env.tokenSecret
+    },
+
+    // Optional settings:
+    httpClient: {
+      maxSockets: 25  // ~> Default is 10
+    }
+  });
+  client.search({
+    terms: "restaurants",
+    location: city + state,
+    radius_filter: radius,
+    category_filter: category
+  }).then(function (data) {
+    var businesses = data.businesses;
+    var location = data.region;
+    res.json(data);
+    // ...
+  }).catch(function(error) {
+    console.log("ERROR" + error);
+    console.log(city);
+  })
+});
+
+router.get('/api/yelp2/:city/:state/:category', function(req, res, next) {
+  // console.log("STATE" + req.params.state);
+  console.log("YELP2");
   var city = req.params.city;
   console.log(city);
   var state = req.params.state;
@@ -63,6 +108,98 @@ router.get('/api/yelp/:city/:state/:category', function(req, res, next) {
   client.search({
     terms: "restaurants",
     location: city + state,
+    category_filter: category
+  }).then(function (data) {
+    var businesses = data.businesses;
+    var location = data.region;
+    res.json(data);
+    // ...
+  }).catch(function(error) {
+    console.log("ERROR" + error);
+    console.log(city);
+  })
+});
+
+router.get('/api/yelp3/:city/:state/:latitude/:longitude/:radius/:category', function(req, res, next) {
+  // console.log("STATE" + req.params.state);
+  console.log("YELP3");
+  var city = req.params.city;
+  console.log(city);
+  var state = req.params.state;
+  var latitude = req.params.latitude;
+  var longitude = req.params.longitude;
+  var radius = req.params.radius;
+  if(req.params.category === 'undefined') {
+    category = '';
+  }
+  else {
+    category = req.params.category;
+  }
+
+  // var location = city + '+' + state;
+  var client = yelp.createClient({
+    oauth: {
+      "consumer_key": process.env.oauth_consumer_key,
+      "consumer_secret": process.env.consumerSecret,
+      "token": process.env.oauth_token,
+      "token_secret": process.env.tokenSecret
+    },
+
+    // Optional settings:
+    httpClient: {
+      maxSockets: 25  // ~> Default is 10
+    }
+  });
+  client.search({
+    terms: "restaurants",
+    location: city + state,
+    cll: latitude + ',' + longitude,
+    radius_filter: radius,
+    category_filter: category
+  }).then(function (data) {
+    var businesses = data.businesses;
+    var location = data.region;
+    res.json(data);
+    // ...
+  }).catch(function(error) {
+    console.log("ERROR" + error);
+    console.log(city);
+  })
+});
+
+router.get('/api/yelp4/:city/:state/:latitude/:longitude/:category', function(req, res, next) {
+  // console.log("STATE" + req.params.state);
+  console.log("YELP4");
+  var city = req.params.city;
+  console.log(city);
+  var state = req.params.state;
+  var latitude = req.params.latitude;
+  var longitude = req.params.longitude;
+  if(req.params.category === 'undefined') {
+    category = '';
+  }
+  else {
+    category = req.params.category;
+  }
+
+  // var location = city + '+' + state;
+  var client = yelp.createClient({
+    oauth: {
+      "consumer_key": process.env.oauth_consumer_key,
+      "consumer_secret": process.env.consumerSecret,
+      "token": process.env.oauth_token,
+      "token_secret": process.env.tokenSecret
+    },
+
+    // Optional settings:
+    httpClient: {
+      maxSockets: 25  // ~> Default is 10
+    }
+  });
+  client.search({
+    terms: "restaurants",
+    location: city + state,
+    cll: latitude + ',' + longitude,
     category_filter: category
   }).then(function (data) {
     var businesses = data.businesses;

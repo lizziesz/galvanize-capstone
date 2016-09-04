@@ -1,4 +1,5 @@
 <h2 ng-show="view.inputLocation" class="text-center">First things first. Where are you?</h2>
+<h2 ng-show="view.inputRadius" class="text-center">How far are you willing to go?</h2>
 <h2 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h2>
 <div class="formClass">
     <form name="searchForm">
@@ -21,23 +22,51 @@
         <div class="form-group col-md-6">
           <label for="city">City</label>
           <input id="city" type="text" class="form-control" ng-model="view.city">
+          <p class="error" ng-show="view.noCity">You must enter a city!</p>
         </div>
       </div>
       <div class="row" ng-show="view.inputLocation">
         <div class="form-group col-md-6">
           <label for="state">State</label>
           <input id="state" type="text" class="form-control" ng-model="view.state">
+          <p class="error" ng-show="view.noState">You must enter a state!</p>
         </div>
         <div class="form-group col-md-6">
           <label for="zip">Zip Code</label>
           <input id="zip" type="text" class="form-control" ng-model="view.zip">
         </div>
       </div>
-
+      <div class="row text-center" ng-show="view.inputRadius">
+        <div class="radio col-md-12">
+          <label>
+            <input type="radio" name="radius" value='' ng-model="view.noRadius">Doesn't Matter
+          </label>
+        </div>
+        <div class="radio col-md-3">
+          <label>
+            <input type="radio" name="radius" value='1609' ng-model="view.oneMile">1 Mile
+          </label>
+        </div>
+        <div class="radio col-md-3">
+          <label>
+            <input type="radio" name="radius" value='8046' ng-model="view.fiveMiles">5 Miles
+          </label>
+        </div>
+        <div class="radio col-md-3">
+          <label>
+            <input type="radio" name="radius" value='16093' ng-model="view.tenMiles">10 Miles
+          </label>
+        </div>
+        <div class="radio col-md-3">
+          <label>
+            <input type="radio" name="radius" value='32186' ng-model="view.twentyMiles">20 Miles
+          </label>
+        </div>
+      </div>
       <div class="row text-left" ng-show="view.inputTypeOfFood">
         <div class="radio col-md-12 text-center">
           <label>
-            <input type="radio" name="category" value= '' ng-model="view.anything">Anything
+            <input type="radio" name="category" value='' ng-model="view.anything">Anything
           </label>
         </div>
         <div class="radio col-md-2">
@@ -142,6 +171,8 @@
         </div>
       </div>
       <button class="btn btn-info center-block" ng-show="view.inputLocation" ng-click="view.changeInput()">Submit Location
+      </button>
+      <button class="btn btn-info center-block" ng-show="view.inputRadius" ng-click="view.submitRadius()">Submit Search Radius
       </button>
       <button class="btn btn-info center-block" type="submit" ng-show="view.inputTypeOfFood" ng-click="view.searchYelp()">Tell Me Where To Go!
       </button>
