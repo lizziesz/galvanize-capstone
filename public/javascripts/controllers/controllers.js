@@ -63,7 +63,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
         $scope.view.zip = stateZipArray[2];
         $scope.view.loading = false;
         $scope.view.locationConfirmed = true;
-      })
+      });
 
     };
 
@@ -139,8 +139,11 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
       if($scope.view.vegetarian) {
         $scope.view.category = 'vegetarian';
       }
-      console.log($scope.view.category);
+
+      // console.log($scope.view.category);
+
       YelpAPIService.searchYelpCity($scope.view.city, $scope.view.state, $scope.view.category).then(function(data) {
+        console.log(data.data);
         var max = data.data.businesses.length - 1;
         var randomNum = getRandomInt(0, max);
         console.log(randomNum);
@@ -150,7 +153,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
         console.log($scope.view.restaurants);
         $scope.view.inputTypeOfFood = false;
         $scope.view.showResults = true;
-      })
+      });
 
   }
 
