@@ -173,6 +173,35 @@ router.post('/api/places', function(req, res, next) {
   });
 });
 
+router.post('/api/placestwo', function(req, res, next) {
+  knex('places')
+  .where({
+    user_id: req.body.user_id
+  })
+  .then(function(data) {
+    console.log(data);
+    for(var i=0; i<data.length; i++) {
+      if(data[i].yelp_url === req.body.yelp_url) {
+        return "Already there";
+      }
+    }
+    knex('places').insert({
+      user_id: req.body.user_id,
+      name: req.body.name,
+      image: req.body.image,
+      address_line_1: req.body.address_line_1,
+      address_line_2: req.body.address_line_2,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      yelp_url: req.body.yelp_url,
+      is_favorite: false
+    }).then(function(data) {
+      res.redirect('/');
+    });
+  });
+});
+
 router.get('/api/places/:id', function(req, res, next) {
   knex('places')
   .where({
@@ -205,6 +234,16 @@ router.post('/api/removefavorite/:id', function(req, res, next) {
     is_favorite: false
   }).then(function(){
     res.redirect('/');
+  });
+});
+
+router.get('/api/faves/:id', function(req, res, next) {
+  knex('places')
+  .where({
+    user_id: req.params.id,
+    is_favorite: true
+  }).then(function(data) {
+    res.json(data);
   });
 });
 
