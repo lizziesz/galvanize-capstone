@@ -28,6 +28,7 @@ main {
 
 header {
   height: 120px;
+  background: url('../images/confectionary.png') repeat 0 0;
 }
 
 .navbar {
@@ -108,6 +109,18 @@ input.ng-dirty.ng-invalid {
 
 /*Dashboard Page*/
 
+.dashContainer {
+  /*background-color: #3A6B62;*/
+  min-height: 45em;
+  /*opacity: 0.6;*/
+  background: url('../images/sushi.jpg') repeat 0 0;
+}
+
+/*.dashGroup {
+  padding-left: 5%;
+  padding-right: 5%;
+}*/
+
 .dashHeading:hover {
   cursor: pointer;
   color: #279E88;
@@ -115,11 +128,27 @@ input.ng-dirty.ng-invalid {
 
 .dashPlaces {
   height: 300px;
+  overflow: scroll;
+  color: white;
   border: solid 1px black;
+  border-radius: 5%;
+  width: 350px;
+  margin: 10px;
+  /*background-color: #7FEBD7;*/
+  background: url('../images/footer_lodyas.png') repeat 0 0;
+  opacity: 0.8;
+}
+
+.dashPlaces::after {
+  opacity: 0.6;
 }
 
 ul {
   list-style-type: none;
+}
+
+ul li {
+  padding: 3px;
 }
 
 /*Background*/
@@ -173,7 +202,7 @@ ul {
 }
 
 .dashBackground::after {
-  background-image: url('../images/breakfast.jpg');
+  background-image: url('../images/sushi.jpg');
   background-repeat: repeat-x;
   background-size: cover;
   content: "";
@@ -229,5 +258,7 @@ ul {
 footer {
   padding-bottom: 20px;
   padding-top: 20px;
-  background-color: #279E88;
+  color: white;
+  /*background-color: #279E88;*/
+  background: url('../images/footer_lodyas.png') repeat 0 0;
 }
