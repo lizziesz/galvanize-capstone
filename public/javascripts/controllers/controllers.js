@@ -95,175 +95,105 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
   }
 
   $scope.view.submitRadius = function() {
-    if($scope.view.noRadius) {
+    if($scope.view.radius === "noradius") {
       $scope.view.radius = false;
-    }
-    if($scope.view.oneMile) {
-      $scope.view.radius = 1609;
-    }
-    if($scope.view.fiveMiles) {
-      $scope.view.radius = 8046;
-    }
-    if($scope.view.tenMiles) {
-      $scope.view.radius = 16093;
-    }
-    if($scope.view.twentyMiles) {
-      $scope.view.radius = 32186;
     }
     $scope.view.inputRadius = false;
     $scope.view.inputTypeOfFood = true;
+    console.log($scope.view.radius);
   }
 
   $scope.view.businesses = [];
 
   $scope.view.searchYelp = function() {
-
-      if($scope.view.anything) {
-        $scope.view.category = '';
-      }
-      if($scope.view.breakfast_brunch) {
-        $scope.view.category = 'breakfast_brunch';
-      }
-      if($scope.view.bbq) {
-        $scope.view.category = 'bbq';
-      }
-      if($scope.view.burgers) {
-        $scope.view.category = 'burgers';
-      }
-      if($scope.view.chinese) {
-        $scope.view.category = 'chinese'
-      }
-      if($scope.view.comfortfood) {
-        $scope.view.category = 'comfortfood'
-      }
-      if($scope.view.hotdogs) {
-        $scope.view.category = 'hotdogs';
-      }
-      if($scope.view.indpak) {
-        $scope.view.category = 'indpak';
-      }
-      if($scope.view.italian) {
-        $scope.view.category = 'italian';
-      }
-      if($scope.view.japanese) {
-        $scope.view.category = 'japanese';
-      }
-      if($scope.view.mediterranean) {
-        $scope.view.category = 'mediterranean';
-      }
-      if($scope.view.mexican) {
-        $scope.view.category = 'mexican';
-      }
-      if($scope.view.pizza) {
-        $scope.view.category = 'pizza';
-      }
-      if($scope.view.salad) {
-        $scope.view.category = 'salad';
-      }
-      if($scope.view.sandwiches) {
-        $scope.view.category = 'sandwiches';
-      }
-      if($scope.view.seafood) {
-        $scope.view.category = 'seafood';
-      }
-      if($scope.view.steak) {
-        $scope.view.category = 'steak';
-      }
-      if($scope.view.sushi) {
-        $scope.view.category = 'sushi';
-      }
-      if($scope.view.vegan) {
-        $scope.view.category = 'vegan';
-      }
-      if($scope.view.vegetarian) {
-        $scope.view.category = 'vegetarian';
-      }
-
-      // console.log($scope.view.category);
-      if($scope.view.radius && !$scope.view.latitude && !$scope.view.longitude) {
-        YelpAPIService.searchYelpCity($scope.view.city, $scope.view.state, $scope.view.radius, $scope.view.category).then(function(data) {
-          console.log(data.data);
-          if(data.data.businesses.length === 0) {
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-            $scope.view.errorMessage = true;
-          }
-          else {
-            var max = data.data.businesses.length - 1;
-            var randomNum = getRandomInt(0, max);
-            console.log(randomNum);
-            console.log(data.data.businesses[randomNum].name);
-            console.log($scope.view.restaurants);
-            $scope.view.restaurants.push(data.data.businesses[randomNum]);
-            console.log($scope.view.restaurants);
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-          }
-        });
-      }
-      if(!$scope.view.radius && !$scope.view.latitude && !$scope.view.longitude) {
-        YelpAPIService.searchYelp($scope.view.city, $scope.view.state, $scope.view.category).then(function(data) {
-          console.log(data.data);
-          if(data.data.businesses.length === 0) {
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-            $scope.view.errorMessage = true;
-          }
-          else {
-            var max = data.data.businesses.length - 1;
-            var randomNum = getRandomInt(0, max);
-            console.log(randomNum);
-            console.log(data.data.businesses[randomNum].name);
-            console.log($scope.view.restaurants);
-            $scope.view.restaurants.push(data.data.businesses[randomNum]);
-            console.log($scope.view.restaurants);
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-          }
-        })
-      }
-      if($scope.view.radius && $scope.view.latitude) {
-        YelpAPIService.searchYelpLat($scope.view.city, $scope.view.state, $scope.view.latitude, $scope.view.longitude, $scope.view.radius, $scope.view.category).then(function(data) {
-          console.log(data.data);
-          if(data.data.businesses.length === 0) {
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-            $scope.view.errorMessage = true;
-          }
-          else {
-            var max = data.data.businesses.length - 1;
-            var randomNum = getRandomInt(0, max);
-            console.log(randomNum);
-            console.log(data.data.businesses[randomNum].name);
-            console.log($scope.view.restaurants);
-            $scope.view.restaurants.push(data.data.businesses[randomNum]);
-            console.log($scope.view.restaurants);
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-          }
-        });
-      }
-      if(!$scope.view.radius && $scope.view.latitude) {
-        YelpAPIService.searchYelpLatNoRad($scope.view.city, $scope.view.state, $scope.view.latitude, $scope.view.longitude, $scope.view.category).then(function(data) {
-          console.log(data.data);
-          if(data.data.businesses.length === 0) {
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-            $scope.view.errorMessage = true;
-          }
-          else {
-            var max = data.data.businesses.length - 1;
-            var randomNum = getRandomInt(0, max);
-            console.log(randomNum);
-            console.log(data.data.businesses[randomNum].name);
-            console.log($scope.view.restaurants);
-            $scope.view.restaurants.push(data.data.businesses[randomNum]);
-            console.log($scope.view.restaurants);
-            $scope.view.inputTypeOfFood = false;
-            $scope.view.showResults = true;
-          }
-        });
-      }
+    if($scope.view.category === 'anything') {
+      $scope.view.category = 'undefined';
+    }
+    console.log($scope.view.category);
+    if($scope.view.radius && !$scope.view.latitude && !$scope.view.longitude) {
+      YelpAPIService.searchYelpCity($scope.view.city, $scope.view.state, $scope.view.radius, $scope.view.category).then(function(data) {
+        console.log(data.data);
+        if(data.data.businesses.length === 0) {
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+          $scope.view.errorMessage = true;
+        }
+        else {
+          var max = data.data.businesses.length - 1;
+          var randomNum = getRandomInt(0, max);
+          console.log(randomNum);
+          console.log(data.data.businesses[randomNum].name);
+          console.log($scope.view.restaurants);
+          $scope.view.restaurants.push(data.data.businesses[randomNum]);
+          console.log($scope.view.restaurants);
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+        }
+      });
+    }
+    if(!$scope.view.radius && !$scope.view.latitude && !$scope.view.longitude) {
+      YelpAPIService.searchYelp($scope.view.city, $scope.view.state, $scope.view.category).then(function(data) {
+        console.log(data.data);
+        if(data.data.businesses.length === 0) {
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+          $scope.view.errorMessage = true;
+        }
+        else {
+          var max = data.data.businesses.length - 1;
+          var randomNum = getRandomInt(0, max);
+          console.log(randomNum);
+          console.log(data.data.businesses[randomNum].name);
+          console.log($scope.view.restaurants);
+          $scope.view.restaurants.push(data.data.businesses[randomNum]);
+          console.log($scope.view.restaurants);
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+        }
+      })
+    }
+    if($scope.view.radius && $scope.view.latitude) {
+      YelpAPIService.searchYelpLat($scope.view.city, $scope.view.state, $scope.view.latitude, $scope.view.longitude, $scope.view.radius, $scope.view.category).then(function(data) {
+        console.log(data.data);
+        if(data.data.businesses.length === 0) {
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+          $scope.view.errorMessage = true;
+        }
+        else {
+          var max = data.data.businesses.length - 1;
+          var randomNum = getRandomInt(0, max);
+          console.log(randomNum);
+          console.log(data.data.businesses[randomNum].name);
+          console.log($scope.view.restaurants);
+          $scope.view.restaurants.push(data.data.businesses[randomNum]);
+          console.log($scope.view.restaurants);
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+        }
+      });
+    }
+    if(!$scope.view.radius && $scope.view.latitude) {
+      YelpAPIService.searchYelpLatNoRad($scope.view.city, $scope.view.state, $scope.view.latitude, $scope.view.longitude, $scope.view.category).then(function(data) {
+        console.log(data.data);
+        if(data.data.businesses.length === 0) {
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+          $scope.view.errorMessage = true;
+        }
+        else {
+          var max = data.data.businesses.length - 1;
+          var randomNum = getRandomInt(0, max);
+          console.log(randomNum);
+          console.log(data.data.businesses[randomNum].name);
+          console.log($scope.view.restaurants);
+          $scope.view.restaurants.push(data.data.businesses[randomNum]);
+          console.log($scope.view.restaurants);
+          $scope.view.inputTypeOfFood = false;
+          $scope.view.showResults = true;
+        }
+      });
+    }
 
   }
 
