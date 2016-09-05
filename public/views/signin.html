@@ -7,18 +7,18 @@
           <div class="form-group col-md-12 signInput">
             <p><strong>Username: </strong></p>
             <input type="text" name="usernames" placeholder="Username" ng-model="signInForm.username" required class="formInput form-control">
-            <p class="error" ng-show="signInForm.username.$dirty && signInForm.username.$invalid">You must enter a username.</p>
+            <p class="error" ng-show="signInForm.usernames.$dirty && signInForm.usernames.$invalid">You must enter a username.</p>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-12 signInput">
             <p><strong>Password: </strong></p>
             <input type="password" name="passwords" placeholder="Password" ng-model="signInForm.password" required class="formInput form-control">
-            <p class="error" ng-show="signInForm.password.$dirty && signInForm.password.$invalid">You must enter a password.</p>
+            <p class="error" ng-show="signInForm.passwords.$dirty && signInForm.passwords.$invalid">You must enter a password.</p>
           </div>
         </div>
         <input type="submit" value="Sign In" class="submitButton">
-        <p ng-show="view.error">{{view.error}}</p>
+        <p ng-show="view.error" class="error">{{view.error}}</p>
       </form>
     </div>
   </div>
