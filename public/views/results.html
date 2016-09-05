@@ -27,8 +27,10 @@
     <button class="btn btn-warning center-block"  ng-if="!result.location.display_address[2]" ng-click="view.addRestaurant(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.url)" ng-show="user">I'm going here!</button>
     <button class="btn btn-warning center-block"  ng-if="result.location.display_address[2] && !result.location.display_address[3]" ng-click="view.addRestaurantTwo(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.location.display_address[2], result.url)" ng-show="user">I'm going here!</button>
     <button class="btn btn-warning center-block"  ng-if="result.location.display_address[3]" ng-click="view.addRestaurantTwo(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.location.display_address[3], result.url)" ng-show="user">I'm going here!</button>
-    <button class="btn btn-info center-block" type="submit" ng-click="view.searchYelpAgain()">Not satisfied? Try again!
+    <br>
+    <button class="btn btn-primary center-block" type="submit" ng-click="view.searchYelpAgain()">Not satisfied? Try again!
     </button>
+    <br>
     <p class="text-center">Results powered by: <span><img src="./images/yelp/yelp-logo-small.png" alt="Yelp"></span></p>
   </div>
 

@@ -290,6 +290,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
         console.log(randomNum);
         console.log(data.data.businesses[randomNum].name);
         console.log($scope.view.restaurants);
+        $scope.view.restaurants.pop();
         $scope.view.restaurants.push(data.data.businesses[randomNum]);
         console.log($scope.view.restaurants);
         $scope.view.inputTypeOfFood = false;
@@ -304,6 +305,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
         console.log(randomNum);
         console.log(data.data.businesses[randomNum].name);
         console.log($scope.view.restaurants);
+        $scope.view.restaurants.pop();
         $scope.view.restaurants.push(data.data.businesses[randomNum]);
         console.log($scope.view.restaurants);
         $scope.view.inputTypeOfFood = false;
@@ -318,6 +320,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
         console.log(randomNum);
         console.log(data.data.businesses[randomNum].name);
         console.log($scope.view.restaurants);
+        $scope.view.restaurants.pop();
         $scope.view.restaurants.push(data.data.businesses[randomNum]);
         console.log($scope.view.restaurants);
         $scope.view.inputTypeOfFood = false;

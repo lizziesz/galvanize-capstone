@@ -26,7 +26,7 @@
   <header ng-controller="NavigationController">
     <h1 class="text-center">Decision Maker</h1>
     <nav>
-      <div class="navbar navbar-default">
+      <div class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -44,7 +44,7 @@
               <li><a href="#/" ng-show="user" ng-click="view.signOut()">Sign Out</a></li>
               <li><a href="#/">About</a></li>
               <li><a href="#/decide" ng-click="view.inputLocation = !view.inputLocation; view.showResults = !view.showResults">Decide for Me!</a></li>
-              <li><a href="#/decide/favorites/{{user.id}}">Decide From Favorites</a></li>
+              <li ng-show="user"><a href="#/decide/favorites/{{user.id}}">Decide From Favorites</a></li>
             </ul>
             <p class="navbar-text navbar-right" ng-show="!user">Hello, Guest</p>
             <a href="#/dashboard/{{user.id}}"><p class="navbar-text navbar-right" ng-show="user">Dashboard</p></a>
