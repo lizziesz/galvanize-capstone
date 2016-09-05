@@ -46,6 +46,11 @@
               <li><a href="#/decide" ng-click="view.inputLocation = !view.inputLocation; view.showResults = !view.showResults">Decide for Me!</a></li>
               <li ng-show="user"><a href="#/decide/favorites/{{user.id}}">Decide From Favorites</a></li>
             </ul>
+            <!-- <ul class="nav navbar-nav navbar-right">
+              <li ng-show="!user">Hello, Guest</li>
+              <li ng-show="user"><a href="#"></a>Hello, {{user.first_name}}</li>
+              <li ng-show="user"><a href="#/dashboard/{{user.id}}">Dashboard</a></li>
+            </ul> -->
             <p class="navbar-text navbar-right" ng-show="!user">Hello, Guest</p>
             <a href="#/dashboard/{{user.id}}"><p class="navbar-text navbar-right" ng-show="user">Dashboard</p></a>
             <p class="navbar-text navbar-right" ng-show="user">Hello, {{user.first_name}}</p>

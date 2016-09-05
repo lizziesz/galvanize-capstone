@@ -30,6 +30,10 @@ header {
   height: 120px;
 }
 
+.navbar {
+    z-index: 9999;
+}
+
 /*Form Styling*/
 
 .formClass {
@@ -122,7 +126,7 @@ ul {
 
 .background, .searchBackground, .faveBackground, .dashBackground, .signUpBackground, .signInBackground {
   margin-top: 0px;
-  position: relative;
+  /*position: relative;*/
   overflow: scroll;
   display: block;
   width: 100%;
