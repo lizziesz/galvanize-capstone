@@ -417,6 +417,10 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
     $scope.view.userPlaces = data.data;
   });
 
+  DashboardService.getFavorites($routeParams.id).then(function(data) {
+    $scope.view.userFaves = data.data;
+  });
+
   $scope.view.addFavorite = function(place_id) {
     console.log("FAVE FAVE FAVE");
     DashboardService.addFavorite(place_id);

@@ -83,6 +83,9 @@ angular.module("decisionApp")
       getPlaces: function(id) {
         return $http.get('/api/places/' + id);
       },
+      getFavorites: function(id) {
+        return $http.get('/api/faves/' + id);
+      },
       addFavorite: function(place_id) {
         return $http.post('/api/favorites/' + place_id);
       },
