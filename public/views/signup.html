@@ -7,14 +7,14 @@
           <div class="form-group col-md-12 signInput">
             <p><strong>Please enter a username: </strong></p>
             <input type="text" name="usernames" placeholder="Username" ng-model="signUpForm.username" required class="formInput form-control">
-            <p class="error" ng-show="signUpForm.username.$dirty && signUpForm.username.$invalid">You must enter a username.</p>
+            <p class="error" ng-show="signUpForm.usernames.$dirty && signUpForm.usernames.$invalid">You must enter a username.</p>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <p><strong>Please enter a password: </strong></p>
             <input type="password" name="passwords" placeholder="Password" ng-model="signUpForm.password" required class="formInput form-control" ng-minlength=8>
-            <p class="error" ng-show="signUpForm.password.$dirty && signUpForm.password.$invalid">Your password is not long enough. Please enter a password of at least 8 characters.</p>
+            <p class="error" ng-show="signUpForm.passwords.$dirty && signUpForm.passwords.$invalid">Your password is not long enough. Please enter a password of at least 8 characters.</p>
           </div>
         </div>
         <div class="row">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <input type="submit" value="Sign Up" class="submitButton">
-        <p ng-show="view.error">{{view.error}}</p>
+        <p ng-show="view.error" class="error">{{view.error}}</p>
       </form>
     </div>
   </div>
