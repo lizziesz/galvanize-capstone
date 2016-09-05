@@ -437,7 +437,7 @@ app.controller("FavoriteController", ['$scope', '$http', '$routeParams', 'Favori
   $scope.view.faveRestaurants = [];
 
   FavoriteService.getFaves($routeParams.id).then(function(data) {
-    console.log(data);
+    console.log("ALL FAVES" + data);
     $scope.view.favoritePlaces = data.data;
   });
 
