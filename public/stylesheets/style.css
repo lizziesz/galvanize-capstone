@@ -24,6 +24,12 @@ main {
   flex: 1 0 auto;
 }
 
+/*Header Styling*/
+
+header {
+  height: 120px;
+}
+
 /*Form Styling*/
 
 .formClass {
@@ -94,6 +100,124 @@ input.ng-dirty.ng-invalid {
 
 .resultsSection {
   margin-bottom: 50px;
+}
+
+/*Dashboard Page*/
+
+.dashHeading:hover {
+  cursor: pointer;
+  color: #279E88;
+}
+
+.dashPlaces {
+  height: 300px;
+  border: solid 1px black;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*Background*/
+
+.background, .searchBackground, .faveBackground, .dashBackground, .signUpBackground, .signInBackground {
+  margin-top: 0px;
+  position: relative;
+  overflow: scroll;
+  display: block;
+  width: 100%;
+  height: 45em;
+}
+
+.background::after {
+  background-image: url('../images/restaurant.jpg');
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.searchBackground::after {
+  background-image: url('../images/outdoor.jpg');
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.faveBackground::after {
+  background-image: url('../images/pizza.jpg');
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.dashBackground::after {
+  background-image: url('../images/breakfast.jpg');
+  background-repeat: repeat-x;
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  min-height: 45em;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.signUpBackground::after {
+  background-image: url('../images/breakfast.jpg');
+  background-repeat: repeat-x;
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  min-height: 45em;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.signInBackground::after {
+  background-image: url('../images/burgers.jpg');
+  background-repeat: repeat-x;
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  min-height: 45em;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.searchContent {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
+  height: 45em;
+  overflow: auto;
 }
 
 /*Footer Styling*/
