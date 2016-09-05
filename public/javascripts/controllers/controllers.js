@@ -449,6 +449,7 @@ app.controller("FavoriteController", ['$scope', '$http', '$routeParams', 'Favori
   }
 
   $scope.view.searchFavesAgain = function() {
+    console.log("RUN AGAIN");
     var randomNum = getRandomInt(0, $scope.view.favoritePlaces.length -1);
     $scope.view.faveRestaurants.pop();
     $scope.view.faveRestaurants.push($scope.view.favoritePlaces[randomNum]);
