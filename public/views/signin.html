@@ -3,7 +3,7 @@
     <div class="searchText">
       <h1 class="text-center">Sign In</h1>
       <div class="submitForm container">
-        <form ng-submit="view.signIn()" name="signInForm" class="userFormClass">
+        <form name="signInForm" class="userFormClass">
           <div class="row">
             <div class="form-group col-md-12 signInput">
               <p><strong>Username: </strong></p>
@@ -18,7 +18,8 @@
               <p class="error" ng-show="signInForm.passwords.$dirty && signInForm.passwords.$invalid">You must enter a password.</p>
             </div>
           </div>
-          <input type="submit" value="Sign In" class="submitButton">
+          <!-- <input type="submit" value="Sign In" class="submitButton"> -->
+          <button type="submit" class="submitButton" ng-click="view.signIn()">Sign In</button>
           <p ng-show="view.error" class="error">{{view.error}}</p>
         </form>
       </div>

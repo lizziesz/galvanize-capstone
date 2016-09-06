@@ -313,20 +313,19 @@ app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$locati
   }
 
   $scope.view.signIn = function() {
-    $scope.view = {};
 
     SignUpService.signIn($scope.signInForm.username, $scope.signInForm.password)
       .then(function(res) {
         if(res.data.errors) {
-        $scope.view.error = res.data.errors;
-      }
-      else {
-        localStorage.jwt = res.data.token;
-        $location.path('/');
-        $window.location.reload();
-      }
-  })
-}
+          $scope.view.error = res.data.errors;
+        }
+        else {
+          localStorage.jwt = res.data.token;
+          $location.path('/');
+          $window.location.reload();
+        }
+      })
+  }
 
 }]);
 

@@ -299,14 +299,13 @@ router.post('/api/signin', function(req, res, next) {
       token = jwt.sign({ id: data.id, username: data.username, is_admin: data.is_admin, first_name: data.first_name }, process.env.SECRET);
       res.json({token:token});
       console.log("token token: " + token);
-      // res.redirect('/bikes');
-    } else{
+    } else {
       console.log('username or password is incorrect');
       res.json({errors: 'username or password is incorrect'});
     }
   }).catch(function(err) {
     console.log(err);
-    next(err)
+    res.json({errors: "There was an error"});
   })
 });
 
