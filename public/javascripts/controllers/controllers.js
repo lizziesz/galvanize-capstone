@@ -357,6 +357,7 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
 
   DashboardService.getFavorites($routeParams.id).then(function(data) {
     $scope.view.userFaves = data.data;
+    console.log($scope.view.userFaves);
   });
 
   $scope.view.addFavorite = function(place_id) {
@@ -365,6 +366,12 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
   }
 
   $scope.view.removeFavorite = function(place_id) {
+    console.log(place_id);
+    for(var i=0; i<$scope.view.userFaves.length; i++) {
+      if($scope.view.userFaves[i].id === place_id) {
+        $scope.view.userFaves.splice(i, 1);
+      }
+    }
     DashboardService.removeFavorite(place_id);
   }
 

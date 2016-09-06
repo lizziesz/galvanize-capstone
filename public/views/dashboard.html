@@ -58,7 +58,7 @@
           <li>{{view.userFaves[$index].city}}, {{view.userFaves[$index].state}} {{view.userFaves[$index].zip}}</li>
           <li><a href="https://www.google.com/maps/dir//{{view.userFaves[$index].address_line_1}} {{view.userFaves[$index].address_line_2}} {{view.userFaves[$index].city}} {{view.userFaves[$index].state}} {{view.userFaves[$index].zip}}" target="_blank">Get Directions</a></li>
           <li><a href="{{view.userFaves[$index].yelp_url}}" target="_blank">Go to the Yelp Page</a></li>
-          <li><button class="btn btn-danger" ng-click="view.userFaves[$index].is_favorite = !view.userFaves[$index].is_favorite; view.removeFavorite(view.userFaves[$index].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
+          <li><button class="btn btn-danger" ng-click="view.userFaves[$index].is_favorite = false; view.removeFavorite(view.userFaves[$index].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
         </div>
         <div class="dashPlaces col-xs-3" ng-if="view.userFaves.length > ($index + 1)">
           <li><h4><strong>{{view.userFaves[$index + 1].name}}</strong></h4></li>
@@ -67,7 +67,7 @@
           <li>{{view.userFaves[$index + 1].city}}, {{view.userFaves[$index + 1].state}} {{view.userFaves[$index + 1].zip}}</li>
           <li><a href="https://www.google.com/maps/dir//{{view.userFaves[$index + 1].address_line_1}} {{view.userFaves[$index + 1].address_line_2}} {{view.userFaves[$index + 1].city}} {{view.userFaves[$index + 1].state}} {{view.userFaves[$index + 1].zip}}" target="_blank">Get Directions</a></li>
           <li><a href="{{view.userFaves[$index + 1].yelp_url}}" target="_blank">Go to the Yelp Page</a></li>
-          <li><button class="btn btn-danger" ng-click="view.userFaves[$index + 1].is_favorite = !view.userFaves[$index + 1].is_favorite; view.removeFavorite(view.userFaves[$index + 1].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
+          <li><button class="btn btn-danger" ng-click="view.userFaves[$index + 1].is_favorite = false; view.removeFavorite(view.userFaves[$index + 1].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
         </div>
         <div class="dashPlaces col-xs-3" ng-if="view.userFaves.length > ($index + 2)">
           <li><h4><strong>{{view.userFaves[$index + 2].name}}</strong></h4></li>
@@ -76,7 +76,7 @@
           <li>{{view.userFaves[$index + 2].city}}, {{view.userFaves[$index + 2].state}} {{view.userFaves[$index + 2].zip}}</li>
           <li><a href="https://www.google.com/maps/dir//{{view.userFaves[$index + 2].address_line_1}} {{view.userFaves[$index + 2].address_line_2}} {{view.userFaves[$index + 2].city}} {{view.userFaves[$index + 2].state}} {{view.userFaves[$index + 2].zip}}" target="_blank">Get Directions</a></li>
           <li><a href="{{view.userFaves[$index + 2].yelp_url}}" target="_blank">Go to the Yelp Page</a></li>
-          <li><button class="btn btn-danger" ng-click="view.userFaves[$index + 2].is_favorite = !view.userFaves[$index + 2].is_favorite; view.removeFavorite(view.userFaves[$index + 2].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
+          <li><button class="btn btn-danger" ng-click="view.userFaves[$index + 2].is_favorite = false; view.removeFavorite(view.userFaves[$index + 2].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
         </div>
         <div class="dashPlaces col-xs-3" ng-if="view.userFaves.length > ($index + 3)">
           <li><h4><strong>{{view.userFaves[$index + 3].name}}</strong></h4></li>
@@ -85,7 +85,7 @@
           <li>{{view.userFaves[$index + 3].city}}, {{view.userFaves[$index + 3].state}} {{view.userFaves[$index + 3].zip}}</li>
           <li><a href="https://www.google.com/maps/dir//{{view.userFaves[$index + 3].address_line_1}} {{view.userFaves[$index + 3].address_line_2}} {{view.userFaves[$index + 3].city}} {{view.userFaves[$index + 3].state}} {{view.userFaves[$index + 3].zip}}" target="_blank">Get Directions</a></li>
           <li><a href="{{view.userFaves[$index + 3].yelp_url}}" target="_blank">Go to the Yelp Page</a></li>
-          <li><button class="btn btn-danger" ng-click="view.userFaves[$index + 3].is_favorite = !view.userFaves[$index + 3].is_favorite; view.removeFavorite(view.userFaves[$index + 3].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
+          <li><button class="btn btn-danger" ng-click="view.userFaves[$index + 3].is_favorite = false; view.removeFavorite(view.userFaves[$index + 3].id)"><i class="fa fa-times" aria-hidden="true"></i> Remove</button></li>
         </div>
       </ul>
     </div>
