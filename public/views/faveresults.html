@@ -1,9 +1,10 @@
 <h1 class="text-center">Results</h1>
+<button class="btn btn-link center-block" ng-click="view.addFaveForm = !view.addFaveForm; view.searchFaveResults = !view.searchFaveResults">Clear</button>
 <div class="dashGroup text-center">
   <ul class="list-group center-block row" ng-repeat="place in view.faveBusResults" ng-if="$index % 3 === 0">
     <div class="dashPlaces col-xs-4">
       <li><h4><strong>{{view.faveBusResults[$index].name}}</strong></h4></li>
-      <li><img ng-src="{{view.faveBusResults[$index].image_url}}" alt="Restaurant"></li>
+      <li><img ng-src="{{view.faveBusResults[$index].image_url}}" alt="Image"></li>
       <li ng-show="!view.faveBusResults[$index].location.display_address[2]">{{view.faveBusResults[$index].location.display_address[0]}}</li>
       <li ng-show="!view.faveBusResults[$index].location.display_address[2]">{{view.faveBusResults[$index].location.display_address[1]}}</li>
       <li ng-show="view.faveBusResults[$index].location.display_address[2]">{{view.faveBusResults[$index].location.display_address[0]}} {{view.faveBusResults[$index].location.display_address[1]}}</li>
@@ -16,7 +17,7 @@
     </div>
     <div class="dashPlaces col-xs-4" ng-if="view.faveBusResults.length > ($index + 1)">
       <li><h4><strong>{{view.faveBusResults[$index + 1].name}}</strong></h4></li>
-      <li><img ng-src="{{view.faveBusResults[$index + 1].image_url}}" alt="Restaurant"></li>
+      <li><img ng-src="{{view.faveBusResults[$index + 1].image_url}}" alt="Image"></li>
       <li ng-show="!view.faveBusResults[$index + 1].location.display_address[2]">{{view.faveBusResults[$index + 1].location.display_address[0]}}</li>
       <li ng-show="!view.faveBusResults[$index + 1].location.display_address[2]">{{view.faveBusResults[$index + 1].location.display_address[1]}}</li>
       <li ng-show="view.faveBusResults[$index + 1].location.display_address[2]">{{view.faveBusResults[$index + 1].location.display_address[0]}} {{view.faveBusResults[$index + 1].location.display_address[1]}}</li>
@@ -29,7 +30,7 @@
     </div>
     <div class="dashPlaces col-xs-4" ng-if="view.faveBusResults.length > ($index + 2)">
       <li><h4><strong>{{view.faveBusResults[$index + 2].name}}</strong></h4></li>
-      <li><img ng-src="{{view.faveBusResults[$index + 2].image_url}}" alt="Restaurant"></li>
+      <li><img ng-src="{{view.faveBusResults[$index + 2].image_url}}" alt="Image"></li>
       <li ng-show="!view.faveBusResults[$index + 2].location.display_address[2]">{{view.faveBusResults[$index + 2].location.display_address[0]}}</li>
       <li ng-show="!view.faveBusResults[$index + 2].location.display_address[2]">{{view.faveBusResults[$index + 2].location.display_address[1]}}</li>
       <li ng-show="view.faveBusResults[$index + 2].location.display_address[2]">{{view.faveBusResults[$index + 2].location.display_address[0]}} {{view.faveBusResults[$index + 2].location.display_address[1]}}</li>
