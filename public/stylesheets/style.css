@@ -178,7 +178,7 @@ ul li {
 
 /*Background*/
 
-.background, .searchBackground, .faveBackground, .dashBackground, .signUpBackground, .signInBackground {
+.background, .searchBackground, .faveBackground, .dashBackground, .signUpBackground, .signInBackground, .aboutBackground {
   margin-top: 0px;
   position: relative;
   overflow: scroll;
@@ -190,6 +190,19 @@ ul li {
 
 .background::after {
   background-image: url('../images/restaurant.jpg');
+  background-size: cover;
+  content: "";
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.aboutBackground::after {
+  background-image: url('../images/pasta.jpg');
   background-size: cover;
   content: "";
   opacity: 0.6;

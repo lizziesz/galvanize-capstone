@@ -2,7 +2,10 @@
   <div class="searchContent">
     <div ng-show="!view.faveResults">
       <h1 class="text-center">Search From Your Favorites!</h1>
-      <button class="btn btn-primary center-block" ng-click="view.searchFavorites()">Where Should I Eat?</button>
+      <button class="btn btn-primary center-block" ng-click="view.searchFavorites()" ng-show="view.favoritePlaces.length > 0">Where Should I Eat?</button>
+    </div>
+    <div ng-show="view.favoritePlaces.length === 0">
+      <h3 class="text-center">Looks like you don't have any favorites to search from! <a href="#/decide">Click here to search all places</a> and find somewhere to go! </h3>
     </div>
     <div ng-show="view.faveResults">
       <h1 class="text-center">Here's where you should go eat!</h1>

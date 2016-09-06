@@ -380,7 +380,8 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
     var zip = address2Array[2];
     var yelp_url = yelp_url;
     DashboardService.addNewFave($routeParams.id, name, image, address_line_1, city, state, zip, yelp_url);
-    $window.location.reload();
+    // $window.location.reload();
+    $scope.view.searchFaveResults = false;
   }
 
   $scope.view.addNewFaveTwo = function(name, image, address1, address2, address3, yelp_url) {
@@ -394,7 +395,8 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
     var zip = address3Array[2];
     var yelp_url = yelp_url;
     DashboardService.addNewFaveTwo($routeParams.id, name, image, address_line_1, address_line_2, city, state, zip, yelp_url);
-    $window.location.reload();
+    // $window.location.reload();
+    $scope.view.searchFaveResults = false;
   }
 
 }]);
@@ -402,7 +404,6 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
 app.controller("FavoriteController", ['$scope', '$http', '$routeParams', 'FavoriteService', function($scope, $http, $routeParams, FavoriteService) {
   $scope.view = {};
   $scope.view.faveRestaurants = [];
-
   FavoriteService.getFaves($routeParams.id).then(function(data) {
     console.log("ALL FAVES");
     console.log(data.data);

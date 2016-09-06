@@ -6,6 +6,9 @@ app.config(function($routeProvider, $httpProvider){
     .when('/', {
       templateUrl: 'views/home.html'
     })
+    .when('/about', {
+      templateUrl: 'views/about.html'
+    })
     .when('/decide', {
       templateUrl: 'views/search.html',
       controller: "DecisionController"
