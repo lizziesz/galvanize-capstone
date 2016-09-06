@@ -1,39 +1,41 @@
 <div class="signUpBackground">
   <div class="searchContent">
-    <h1 class="text-center">Sign Up</h1>
-    <div class="submitForm container">
-      <form ng-submit="view.signUp()" name="signUpForm" class="userFormClass">
-        <div class="row">
-          <div class="form-group col-md-12 signInput">
-            <p><strong>Please enter a username: </strong></p>
-            <input type="text" name="usernames" placeholder="Username" ng-model="signUpForm.username" required class="formInput form-control">
-            <p class="error" ng-show="signUpForm.usernames.$dirty && signUpForm.usernames.$invalid">You must enter a username.</p>
+    <div class="searchText">
+      <h1 class="text-center">Sign Up</h1>
+      <div class="submitForm container">
+        <form ng-submit="view.signUp()" name="signUpForm" class="userFormClass">
+          <div class="row">
+            <div class="form-group col-md-12 signInput">
+              <p><strong>Please enter a username: </strong></p>
+              <input type="text" name="usernames" placeholder="Username" ng-model="signUpForm.username" required class="formInput form-control">
+              <p class="error" ng-show="signUpForm.usernames.$dirty && signUpForm.usernames.$invalid">You must enter a username.</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <p><strong>Please enter a password: </strong></p>
-            <input type="password" name="passwords" placeholder="Password" ng-model="signUpForm.password" required class="formInput form-control" ng-minlength=8>
-            <p class="error" ng-show="signUpForm.passwords.$dirty && signUpForm.passwords.$invalid">Your password is not long enough. Please enter a password of at least 8 characters.</p>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <p><strong>Please enter a password: </strong></p>
+              <input type="password" name="passwords" placeholder="Password" ng-model="signUpForm.password" required class="formInput form-control" ng-minlength=8>
+              <p class="error" ng-show="signUpForm.passwords.$dirty && signUpForm.passwords.$invalid">Your password is not long enough. Please enter a password of at least 8 characters.</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <p><strong>Please enter your first name: </strong></p>
-            <input type="text" name="firstname" placeholder="First Name" ng-model="signUpForm.first_name" required class="formInput form-control">
-            <p class="error" ng-show="signUpForm.firstname.$dirty && signUpForm.firstname.$invalid">You must enter your first name.</p>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <p><strong>Please enter your first name: </strong></p>
+              <input type="text" name="firstname" placeholder="First Name" ng-model="signUpForm.first_name" required class="formInput form-control">
+              <p class="error" ng-show="signUpForm.firstname.$dirty && signUpForm.firstname.$invalid">You must enter your first name.</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <p><strong>Please enter your last name: </strong></p>
-            <input type="text" name="lastname" placeholder="Last Name" ng-model="signUpForm.last_name" required class="formInput form-control">
-            <p class="error" ng-show="signUpForm.lastname.$dirty && signUpForm.lastname.$invalid">You must enter your last name.</p>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <p><strong>Please enter your last name: </strong></p>
+              <input type="text" name="lastname" placeholder="Last Name" ng-model="signUpForm.last_name" required class="formInput form-control">
+              <p class="error" ng-show="signUpForm.lastname.$dirty && signUpForm.lastname.$invalid">You must enter your last name.</p>
+            </div>
           </div>
-        </div>
-        <input type="submit" value="Sign Up" class="submitButton">
-        <p ng-show="view.error" class="error">{{view.error}}</p>
-      </form>
+          <input type="submit" value="Sign Up" class="submitButton">
+          <p ng-show="view.error" class="error">{{view.error}}</p>
+        </form>
+      </div>
     </div>
   </div>
 
