@@ -24,6 +24,17 @@ main {
   flex: 1 0 auto;
 }
 
+.btn-xl {
+    padding: 18px 28px;
+    font-size: 22px;
+    border-radius: 8px;
+}
+
+.radioRow {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /*Header Styling*/
 
 header {

@@ -1,12 +1,13 @@
 <div class="searchBackground">
   <div class="searchContent">
-    <h2 ng-show="view.inputLocation" class="text-center">First things first. Where are you?</h2>
-    <h2 ng-show="view.inputRadius" class="text-center">How far are you willing to go?</h2>
-    <h2 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h2>
+    <h1 ng-show="view.inputLocation" class="text-center">First things first. Where are you?</h1>
+    <h1 ng-show="view.inputRadius" class="text-center">How far are you willing to go?</h1>
+    <h1 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h1>
     <div class="formClass">
       <form name="searchForm">
-        <button type="button" ng-show="view.inputLocation && !view.loading" class="btn btn-link center-block" ng-click="view.getLocation()">Get Current Location</button>
+        <button type="button" ng-show="view.inputLocation && !view.loading" class="btn btn-xl btn-link center-block" ng-click="view.getLocation()">Get Current Location</button>
         <p ng-show="view.loading" class="text-center">Getting current location...</p>
+        <p ng-show="view.locationConfirmed" class="text-center">Success!</p>
         <div class='spinner' ng-show="view.loading">
           <pulse-spinner></pulse-spinner>
         </div>
@@ -38,34 +39,37 @@
             <input id="zip" type="text" class="form-control" ng-model="view.zip">
           </div>
         </div>
+        <!-- <div class="row text-center" ng-show="view.inputRadius"> -->
+
         <div class="row text-center" ng-show="view.inputRadius">
-          <div class="radio col-md-12">
-            <label>
-              <input type="radio" name="radius" value='noradius' ng-model="view.radius">Doesn't Matter
+          <div class="col-md-12 radioRow">
+            <label class="radio-inline">
+              <input type="radio" name="radius" value='noradius' ng-model="view.radius">Doesn't matter
             </label>
           </div>
-          <div class="radio col-md-3">
-            <label>
+          <!-- <br> -->
+          <div class="col-xs-3">
+            <label class="radio-inline">
               <input type="radio" name="radius" value='1609' ng-model="view.radius">1 Mile
             </label>
           </div>
-          <div class="radio col-md-3">
-            <label>
+          <div class="col-xs-3">
+            <label class="radio-inline">
               <input type="radio" name="radius" value='8046' ng-model="view.radius">5 Miles
             </label>
           </div>
-          <div class="radio col-md-3">
-            <label>
+          <div class="col-xs-3">
+            <label class="radio-inline">
               <input type="radio" name="radius" value='16093' ng-model="view.radius">10 Miles
             </label>
           </div>
-          <div class="radio col-md-3">
-            <label>
+          <div class="col-xs-3">
+            <label class="radio-inline">
               <input type="radio" name="radius" value='32186' ng-model="view.radius">20 Miles
             </label>
           </div>
         </div>
-        <div class="row text-left" ng-show="view.inputTypeOfFood">
+        <div class="row" ng-show="view.inputTypeOfFood">
           <div class="radio col-md-12 text-center">
             <label>
               <input type="radio" name="category" value='anything' ng-model="view.category">Anything
@@ -174,7 +178,7 @@
         </div>
         <button class="btn btn-primary center-block" ng-show="view.inputLocation" ng-click="view.changeInput()">Submit Location
         </button>
-        <button class="btn btn-primary center-block" ng-show="view.inputRadius" ng-click="view.submitRadius()">Submit Search Radius
+        <button class="btn btn-primary center-block radioRow" ng-show="view.inputRadius" ng-click="view.submitRadius()">Submit Search Radius
         </button>
         <button class="btn btn-primary center-block" type="submit" ng-show="view.inputTypeOfFood" ng-click="view.searchYelp()">Tell Me Where To Go!
         </button>
