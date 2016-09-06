@@ -35,6 +35,15 @@ main {
   margin-bottom: 20px;
 }
 
+a {
+  color: #162252;
+}
+
+.homeText {
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
 /*Header Styling*/
 
 header {
@@ -153,6 +162,10 @@ input.ng-dirty.ng-invalid {
 
 .dashPlaces::after {
   opacity: 0.6;
+}
+
+.dashPlaces a {
+  color: #00cece;
 }
 
 ul {
