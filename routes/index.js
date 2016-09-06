@@ -212,6 +212,40 @@ router.get('/api/yelp4/:city/:state/:latitude/:longitude/:category', function(re
   })
 });
 
+router.get('/api/yelpfave/:name/:city/:state', function(req, res, next) {
+  console.log("YELP5");
+  var name = req.params.name;
+  var city = req.params.city;
+  console.log(name);
+  var state = req.params.state;
+  // var location = city + '+' + state;
+  var client = yelp.createClient({
+    oauth: {
+      "consumer_key": process.env.oauth_consumer_key,
+      "consumer_secret": process.env.consumerSecret,
+      "token": process.env.oauth_token,
+      "token_secret": process.env.tokenSecret
+    },
+
+    // Optional settings:
+    httpClient: {
+      maxSockets: 25  // ~> Default is 10
+    }
+  });
+  client.search({
+    term: name,
+    location: city + state
+  }).then(function (data) {
+    var businesses = data.businesses;
+    var location = data.region;
+    res.json(data);
+    // ...
+  }).catch(function(error) {
+    console.log("ERROR" + error);
+    console.log(city);
+  })
+});
+
 router.get('/api/users', function(req, res, next) {
   // res.json("['hi', 'ivy']")
   knex('users').then(function(data) {
@@ -333,6 +367,63 @@ router.post('/api/placestwo', function(req, res, next) {
       zip: req.body.zip,
       yelp_url: req.body.yelp_url,
       is_favorite: false
+    }).then(function(data) {
+      res.redirect('/');
+    });
+  });
+});
+
+router.post('/api/placesfave', function(req, res, next) {
+  knex('places')
+  .where({
+    user_id: req.body.user_id
+  })
+  .then(function(data) {
+    console.log(data);
+    for(var i=0; i<data.length; i++) {
+      if(data[i].yelp_url === req.body.yelp_url) {
+        return "Already there";
+      }
+    }
+    knex('places').insert({
+      user_id: req.body.user_id,
+      name: req.body.name,
+      image: req.body.image,
+      address_line_1: req.body.address_line_1,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      yelp_url: req.body.yelp_url,
+      is_favorite: true
+    }).then(function(data) {
+      res.redirect('/');
+    });
+  });
+});
+
+router.post('/api/placestwofave', function(req, res, next) {
+  knex('places')
+  .where({
+    user_id: req.body.user_id
+  })
+  .then(function(data) {
+    console.log(data);
+    for(var i=0; i<data.length; i++) {
+      if(data[i].yelp_url === req.body.yelp_url) {
+        return "Already there";
+      }
+    }
+    knex('places').insert({
+      user_id: req.body.user_id,
+      name: req.body.name,
+      image: req.body.image,
+      address_line_1: req.body.address_line_1,
+      address_line_2: req.body.address_line_2,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      yelp_url: req.body.yelp_url,
+      is_favorite: true
     }).then(function(data) {
       res.redirect('/');
     });

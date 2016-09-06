@@ -91,6 +91,34 @@ angular.module("decisionApp")
       },
       removeFavorite: function(place_id) {
         return $http.post('/api/removefavorite/' + place_id);
+      },
+      searchYelpFave: function(name, city, state) {
+        return $http.get('/api/yelpfave/' + name + '/' + city + '/' + state);
+      },
+      addNewFave: function(user_id, name, image, address_line_1, city, state, zip, yelp_url) {
+        var newPlace = {};
+        newPlace.user_id = user_id;
+        newPlace.name = name;
+        newPlace.image = image;
+        newPlace.address_line_1 = address_line_1;
+        newPlace.city = city;
+        newPlace.state = state;
+        newPlace.zip = zip;
+        newPlace.yelp_url = yelp_url;
+        return $http.post('/api/placesfave', newPlace)
+      },
+      addNewFaveTwo: function(user_id, name, image, address_line_1, address_line_2, city, state, zip, yelp_url){
+        var newPlace = {};
+        newPlace.user_id = user_id;
+        newPlace.name = name;
+        newPlace.image = image;
+        newPlace.address_line_1 = address_line_1;
+        newPlace.address_line_2 = address_line_2;
+        newPlace.city = city;
+        newPlace.state = state;
+        newPlace.zip = zip;
+        newPlace.yelp_url = yelp_url;
+        return $http.post('/api/placestwofave', newPlace);
       }
     }
   })

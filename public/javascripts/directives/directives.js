@@ -10,4 +10,11 @@ app.directive('cpAddFaveForm', function(){
     restrict: 'E',
     templateUrl: 'views/addfave.html'
   }
-})
+});
+
+app.directive('cpFaveResults', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'views/faveresults.html'
+  }
+});
