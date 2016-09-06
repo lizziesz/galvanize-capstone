@@ -1,8 +1,3 @@
-// angular.module("decisionApp")
-//   .factory("DecisionService", function($http) {
-//
-//   })
-
 function randomString(length, chars) {
   var result = '';
   for(var i=length; i > 0; --i) {

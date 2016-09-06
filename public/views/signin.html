@@ -1,25 +1,27 @@
 <div class="signInBackground">
   <div class="searchContent">
-    <h1 class="text-center">Sign In</h1>
-    <div class="submitForm container">
-      <form ng-submit="view.signIn()" name="signInForm" class="userFormClass">
-        <div class="row">
-          <div class="form-group col-md-12 signInput">
-            <p><strong>Username: </strong></p>
-            <input type="text" name="usernames" placeholder="Username" ng-model="signInForm.username" required class="formInput form-control">
-            <p class="error" ng-show="signInForm.usernames.$dirty && signInForm.usernames.$invalid">You must enter a username.</p>
+    <div class="searchText">
+      <h1 class="text-center">Sign In</h1>
+      <div class="submitForm container">
+        <form ng-submit="view.signIn()" name="signInForm" class="userFormClass">
+          <div class="row">
+            <div class="form-group col-md-12 signInput">
+              <p><strong>Username: </strong></p>
+              <input type="text" name="usernames" placeholder="Username" ng-model="signInForm.username" required class="formInput form-control">
+              <p class="error" ng-show="signInForm.usernames.$dirty && signInForm.usernames.$invalid">You must enter a username.</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12 signInput">
-            <p><strong>Password: </strong></p>
-            <input type="password" name="passwords" placeholder="Password" ng-model="signInForm.password" required class="formInput form-control">
-            <p class="error" ng-show="signInForm.passwords.$dirty && signInForm.passwords.$invalid">You must enter a password.</p>
+          <div class="row">
+            <div class="form-group col-md-12 signInput">
+              <p><strong>Password: </strong></p>
+              <input type="password" name="passwords" placeholder="Password" ng-model="signInForm.password" required class="formInput form-control">
+              <p class="error" ng-show="signInForm.passwords.$dirty && signInForm.passwords.$invalid">You must enter a password.</p>
+            </div>
           </div>
-        </div>
-        <input type="submit" value="Sign In" class="submitButton">
-        <p ng-show="view.error" class="error">{{view.error}}</p>
-      </form>
+          <input type="submit" value="Sign In" class="submitButton">
+          <p ng-show="view.error" class="error">{{view.error}}</p>
+        </form>
+      </div>
     </div>
   </div>
 </div>

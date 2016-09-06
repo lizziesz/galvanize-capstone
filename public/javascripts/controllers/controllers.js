@@ -146,6 +146,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
           var randomNum = getRandomInt(0, max);
           console.log(randomNum);
           $scope.view.yelpData = data.data.businesses;
+          console.log($scope.view.yelpData.length);
           console.log(data.data.businesses[randomNum].name);
           console.log($scope.view.restaurants);
           $scope.view.restaurants.push(data.data.businesses[randomNum]);

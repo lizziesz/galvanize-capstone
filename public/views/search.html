@@ -1,189 +1,191 @@
 <div class="searchBackground">
   <div class="searchContent">
-    <h1 ng-show="view.inputLocation" class="text-center">First things first. Where are you?</h1>
-    <h1 ng-show="view.inputRadius" class="text-center">How far are you willing to go?</h1>
-    <h1 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h1>
-    <div class="formClass">
-      <form name="searchForm">
-        <button type="button" ng-show="view.inputLocation && !view.loading" class="btn btn-xl btn-link center-block" ng-click="view.getLocation()">Get Current Location</button>
-        <p ng-show="view.loading" class="text-center">Getting current location...</p>
-        <p ng-show="view.locationConfirmed" class="text-center">Success!</p>
-        <div class='spinner' ng-show="view.loading">
-          <pulse-spinner></pulse-spinner>
-        </div>
-        <div class="text-center">
-          <i class="fa fa-check fa-3x" aria-hidden="true" ng-show="view.locationConfirmed"></i>
-        </div>
+    <div class="searchText">
+      <h1 ng-show="view.inputLocation" class="text-center">First things first. Where are you?</h1>
+      <h1 ng-show="view.inputRadius" class="text-center">How far are you willing to go?</h1>
+      <h1 ng-show="view.inputTypeOfFood" class="text-center">Next: What are you in the mood for?</h1>
+      <div class="formClass">
+        <form name="searchForm">
+          <button type="button" ng-show="view.inputLocation && !view.loading" class="btn btn-xl btn-link center-block" ng-click="view.getLocation()">Get Current Location</button>
+          <p ng-show="view.loading" class="text-center">Getting current location...</p>
+          <p ng-show="view.locationConfirmed" class="text-center">Success!</p>
+          <div class='spinner' ng-show="view.loading">
+            <pulse-spinner></pulse-spinner>
+          </div>
+          <div class="text-center">
+            <i class="fa fa-check fa-3x" aria-hidden="true" ng-show="view.locationConfirmed"></i>
+          </div>
 
-        <h3 class="text-center" ng-show="view.inputLocation">OR</h3>
+          <h3 class="text-center" ng-show="view.inputLocation">OR</h3>
 
-        <div class="row" ng-show="view.inputLocation">
-          <div class="form-group col-md-6">
-            <label for="address">Address</label>
-            <input name="address" type="text" class="form-control" ng-model="view.address">
+          <div class="row" ng-show="view.inputLocation">
+            <div class="form-group col-md-6">
+              <label for="address">Address</label>
+              <input name="address" type="text" class="form-control" ng-model="view.address">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="city">City</label>
+              <input id="city" type="text" class="form-control" ng-model="view.city">
+              <p class="error" ng-show="view.noCity">You must enter a city!</p>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="city">City</label>
-            <input id="city" type="text" class="form-control" ng-model="view.city">
-            <p class="error" ng-show="view.noCity">You must enter a city!</p>
+          <div class="row" ng-show="view.inputLocation">
+            <div class="form-group col-md-6">
+              <label for="state">State</label>
+              <input id="state" type="text" class="form-control" ng-model="view.state">
+              <p class="error" ng-show="view.noState">You must enter a state!</p>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="zip">Zip Code</label>
+              <input id="zip" type="text" class="form-control" ng-model="view.zip">
+            </div>
           </div>
-        </div>
-        <div class="row" ng-show="view.inputLocation">
-          <div class="form-group col-md-6">
-            <label for="state">State</label>
-            <input id="state" type="text" class="form-control" ng-model="view.state">
-            <p class="error" ng-show="view.noState">You must enter a state!</p>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="zip">Zip Code</label>
-            <input id="zip" type="text" class="form-control" ng-model="view.zip">
-          </div>
-        </div>
-        <!-- <div class="row text-center" ng-show="view.inputRadius"> -->
+          <!-- <div class="row text-center" ng-show="view.inputRadius"> -->
 
-        <div class="row text-center" ng-show="view.inputRadius">
-          <div class="col-md-12 radioRow">
-            <label class="radio-inline">
-              <input type="radio" name="radius" value='noradius' ng-model="view.radius">Doesn't matter
-            </label>
+          <div class="row text-center" ng-show="view.inputRadius">
+            <div class="col-md-12 radioRow">
+              <label class="radio-inline">
+                <input type="radio" name="radius" value='noradius' ng-model="view.radius">Doesn't matter
+              </label>
+            </div>
+            <!-- <br> -->
+            <div class="col-xs-3">
+              <label class="radio-inline">
+                <input type="radio" name="radius" value='1609' ng-model="view.radius">1 Mile
+              </label>
+            </div>
+            <div class="col-xs-3">
+              <label class="radio-inline">
+                <input type="radio" name="radius" value='8046' ng-model="view.radius">5 Miles
+              </label>
+            </div>
+            <div class="col-xs-3">
+              <label class="radio-inline">
+                <input type="radio" name="radius" value='16093' ng-model="view.radius">10 Miles
+              </label>
+            </div>
+            <div class="col-xs-3">
+              <label class="radio-inline">
+                <input type="radio" name="radius" value='32186' ng-model="view.radius">20 Miles
+              </label>
+            </div>
           </div>
-          <!-- <br> -->
-          <div class="col-xs-3">
-            <label class="radio-inline">
-              <input type="radio" name="radius" value='1609' ng-model="view.radius">1 Mile
-            </label>
+          <div class="row" ng-show="view.inputTypeOfFood">
+            <div class="radio col-md-12 text-center">
+              <label>
+                <input type="radio" name="category" value='anything' ng-model="view.category">Anything
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="breakfast_brunch" ng-model="view.category">Breakfast/Brunch
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="bbq" ng-model="view.category">BBQ
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="burgers" ng-model="view.category">Burgers
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="chinese" ng-model="view.category">Chinese
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="comfortfood" ng-model="view.category">Comfort Food
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="hotdogs" ng-model="view.category">Fast Food
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="indpak" ng-model="view.category">Indian
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="italian" ng-model="view.category">Italian
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="japanese" ng-model="view.category">Japanese
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="mediterranean" ng-model="view.category">Mediterranean
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="mexican" ng-model="view.category">Mexican
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="pizza" ng-model="view.category">Pizza
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="salad" ng-model="view.category">Salad
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="sandwiches" ng-model="view.category">Sandwiches
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="seafood" ng-model="view.category">Seafood
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="soup" ng-model="view.category">Soup
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="steak" ng-model="view.category">Steak
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="sushi" ng-model="view.category">Sushi
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="vegan" ng-model="view.category">Vegan
+              </label>
+            </div>
+            <div class="radio col-md-2">
+              <label>
+                <input type="radio" name="category" value="vegetarian" ng-model="view.category">Vegetarian
+              </label>
+            </div>
           </div>
-          <div class="col-xs-3">
-            <label class="radio-inline">
-              <input type="radio" name="radius" value='8046' ng-model="view.radius">5 Miles
-            </label>
-          </div>
-          <div class="col-xs-3">
-            <label class="radio-inline">
-              <input type="radio" name="radius" value='16093' ng-model="view.radius">10 Miles
-            </label>
-          </div>
-          <div class="col-xs-3">
-            <label class="radio-inline">
-              <input type="radio" name="radius" value='32186' ng-model="view.radius">20 Miles
-            </label>
-          </div>
-        </div>
-        <div class="row" ng-show="view.inputTypeOfFood">
-          <div class="radio col-md-12 text-center">
-            <label>
-              <input type="radio" name="category" value='anything' ng-model="view.category">Anything
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="breakfast_brunch" ng-model="view.category">Breakfast/Brunch
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="bbq" ng-model="view.category">BBQ
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="burgers" ng-model="view.category">Burgers
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="chinese" ng-model="view.category">Chinese
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="comfortfood" ng-model="view.category">Comfort Food
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="hotdogs" ng-model="view.category">Fast Food
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="indpak" ng-model="view.category">Indian
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="italian" ng-model="view.category">Italian
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="japanese" ng-model="view.category">Japanese
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="mediterranean" ng-model="view.category">Mediterranean
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="mexican" ng-model="view.category">Mexican
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="pizza" ng-model="view.category">Pizza
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="salad" ng-model="view.category">Salad
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="sandwiches" ng-model="view.category">Sandwiches
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="seafood" ng-model="view.category">Seafood
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="soup" ng-model="view.category">Soup
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="steak" ng-model="view.category">Steak
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="sushi" ng-model="view.category">Sushi
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="vegan" ng-model="view.category">Vegan
-            </label>
-          </div>
-          <div class="radio col-md-2">
-            <label>
-              <input type="radio" name="category" value="vegetarian" ng-model="view.category">Vegetarian
-            </label>
-          </div>
-        </div>
-        <button class="btn btn-primary center-block" ng-show="view.inputLocation" ng-click="view.changeInput()">Submit Location
-        </button>
-        <button class="btn btn-primary center-block radioRow" ng-show="view.inputRadius" ng-click="view.submitRadius()">Submit Search Radius
-        </button>
-        <button class="btn btn-primary center-block" type="submit" ng-show="view.inputTypeOfFood" ng-click="view.searchYelp()">Tell Me Where To Go!
-        </button>
-      </form>
+          <button class="btn btn-primary center-block" ng-show="view.inputLocation" ng-click="view.changeInput()">Submit Location
+          </button>
+          <button class="btn btn-primary center-block radioRow" ng-show="view.inputRadius" ng-click="view.submitRadius()">Submit Search Radius
+          </button>
+          <button class="btn btn-primary center-block" type="submit" ng-show="view.inputTypeOfFood" ng-click="view.searchYelp()">Tell Me Where To Go!
+          </button>
+        </form>
+      </div>
+      <cp-show-results></cp-show-results>
     </div>
-    <cp-show-results></cp-show-results>
   </div>
 </div>

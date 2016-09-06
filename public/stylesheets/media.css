@@ -1,0 +1,9 @@
+@media(min-width: 768px) {
+  .homeText {
+    padding-top: 130px;
+    padding-bottom: 130px;
+  }
+  .searchText {
+    padding-top: 50px;
+  }
+}
