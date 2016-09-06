@@ -1,0 +1,28 @@
+<h5 class="text-center">Search for a business by name and location to add to favorites</h5>
+<div class="submitForm container">
+  <form ng-submit="view.addNewFave()" name="addFaveForm" class="userFormClass">
+    <div class="row">
+      <div class="form-group col-md-8 col-md-offset-2 signInput">
+        <p><strong>Business Name </strong></p>
+        <input type="text" name="names" placeholder="Business Name" ng-model="addFaveForm.name" required class="formInput form-control center-block">
+        <p class="error" ng-show="addFaveForm.names.$dirty && addFaveForm.names.$invalid">You must enter a business name.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-8 col-md-offset-2 signInput">
+        <p><strong>City </strong></p>
+        <input type="text" name="cities" placeholder="City" ng-model="addFaveForm.city" required class="formInput form-control">
+        <p class="error" ng-show="addFaveForm.cities.$dirty && addFaveForm.cities.$invalid">You must enter a city.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-8 col-md-offset-2 signInput">
+        <p><strong>State </strong></p>
+        <input type="text" name="states" placeholder="State" ng-model="addFaveForm.state" required class="formInput form-control">
+        <p class="error" ng-show="addFaveForm.states.$dirty && addFaveForm.states.$invalid">You must enter a state.</p>
+      </div>
+    </div>
+    <input type="submit" value="Add New Fave" class="submitButton">
+    <p ng-show="view.error" class="error">{{view.error}}</p>
+  </form>
+</div>

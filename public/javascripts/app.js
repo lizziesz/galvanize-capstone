@@ -1,18 +1,10 @@
 var app = angular.module('decisionApp', ['ngRoute', 'angular-spinkit']);
 
-app.directive('cpShowResults', function(){
-  return {
-    restrict: 'E',
-    templateUrl: 'views/results.html'
-  }
-})
-
 app.config(function($routeProvider, $httpProvider){
   $httpProvider.interceptors.push('DecisionInterceptor');
   $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html',
-      controller: "DecisionController"
+      templateUrl: 'views/home.html'
     })
     .when('/decide', {
       templateUrl: 'views/search.html',
