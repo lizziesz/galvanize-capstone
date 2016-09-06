@@ -17,7 +17,7 @@
           <br>
           <p class="text-center"><strong>{{result.address_line_1}} {{result.address_line_2}}</strong></p>
           <p class="text-center"><strong>{{result.city}}, {{result.state}} {{result.zip}}</strong></p>
-          <a href="https://www.google.com/maps/dir//{{place.address_line_1}} {{place.city}} {{place.state}} {{place.zip}}" target="_blank"><p class="text-center">Get Directions<p/></a>
+          <a href="https://www.google.com/maps/dir//{{result.address_line_1}} {{result.city}} {{result.state}} {{result.zip}}" target="_blank"><p class="text-center">Get Directions<p/></a>
           <!-- <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}}{{result.location.display_address[1]}}" target="_blank" ng-if="!result.location.display_address[2]"><p class="text-center">Get directions!</p></a> -->
           <p></p>
           <a href="{{result.yelp_url}}" target="_blank"><p class="text-center">Go to the Yelp page!</p></a>

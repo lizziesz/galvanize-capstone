@@ -21,9 +21,6 @@ angular.module("decisionApp")
       searchYelpLatNoRad: function(city, state, latitude, longitude, category) {
         return $http.get('/api/yelp4/' + city + '/' + state + '/' + latitude + '/' + longitude + '/' + category);
       },
-      getUsers: function() {
-        return $http.get('/api/users');
-      },
       addPlace: function(user_id, name, image, address_line_1, city, state, zip, yelp_url) {
         var newPlace = {};
         newPlace.user_id = user_id;
