@@ -1,6 +1,6 @@
 <h5 class="text-center">Search for a business by name and location to add to favorites</h5>
 <div class="submitForm container">
-  <form ng-submit="view.addNewFave()" name="addFaveForm" class="userFormClass">
+  <form ng-submit="view.searchForFave()" name="addFaveForm" class="userFormClass">
     <div class="row">
       <div class="form-group col-md-8 col-md-offset-2 signInput">
         <p><strong>Business Name </strong></p>
@@ -22,7 +22,7 @@
         <p class="error" ng-show="addFaveForm.states.$dirty && addFaveForm.states.$invalid">You must enter a state.</p>
       </div>
     </div>
-    <input type="submit" value="Add New Fave" class="submitButton">
+    <input type="submit" value="Find Fave" class="submitButton">
     <p ng-show="view.error" class="error">{{view.error}}</p>
   </form>
 </div>
