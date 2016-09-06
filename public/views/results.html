@@ -22,7 +22,7 @@
     <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[2]}}" target="_blank" ng-if="result.location.display_address[2] && !result.location.display_address[3]"><p class="text-center">Get directions!</p></a>
     <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[1]}}" target="_blank" ng-if="!result.location.display_address[2]"><p class="text-center">Get directions!</p></a>
     <p></p>
-    <p class="text-center">"{{result.snippet_text}}"</p>
+    <p class="text-center"><strong>"{{result.snippet_text}}"</strong></p>
     <a href="{{result.url}}" target="_blank"><p class="text-center">Read more reviews on Yelp!</p></a>
     <button class="btn btn-warning center-block"  ng-if="!result.location.display_address[2]" ng-click="view.addRestaurant(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.url)" ng-show="user">I'm going here!</button>
     <button class="btn btn-warning center-block"  ng-if="result.location.display_address[2] && !result.location.display_address[3]" ng-click="view.addRestaurantTwo(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.location.display_address[2], result.url)" ng-show="user">I'm going here!</button>
