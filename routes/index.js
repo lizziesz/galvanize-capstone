@@ -63,7 +63,7 @@ router.get('/api/yelp/:city/:state/:radius/:category', function(req, res, next) 
     }
   });
   client.search({
-    terms: "restaurants",
+    term: "restaurants",
     location: city + state,
     radius_filter: radius,
     category_filter: category
@@ -106,7 +106,7 @@ router.get('/api/yelp2/:city/:state/:category', function(req, res, next) {
     }
   });
   client.search({
-    terms: "restaurants",
+    term: "restaurants",
     location: city + state,
     category_filter: category
   }).then(function (data) {
@@ -151,7 +151,7 @@ router.get('/api/yelp3/:city/:state/:latitude/:longitude/:radius/:category', fun
     }
   });
   client.search({
-    terms: "restaurants",
+    term: "restaurants",
     location: city + state,
     cll: latitude + ',' + longitude,
     radius_filter: radius,
@@ -197,7 +197,7 @@ router.get('/api/yelp4/:city/:state/:latitude/:longitude/:category', function(re
     }
   });
   client.search({
-    terms: "restaurants",
+    term: "restaurants",
     location: city + state,
     cll: latitude + ',' + longitude,
     category_filter: category

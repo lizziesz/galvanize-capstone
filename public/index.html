@@ -44,7 +44,7 @@
               <li><a href="#/signin" ng-show="!user">Sign In</a></li>
               <li><a href="#/" ng-show="user" ng-click="view.signOut()">Sign Out</a></li>
               <li><a href="#/about">About</a></li>
-              <li><a href="#/decide" ng-click="view.inputLocation = !view.inputLocation; view.showResults = !view.showResults">Decide for Me!</a></li>
+              <li><a href="#/decide">Decide for Me!</a></li>
               <li ng-show="user"><a href="#/decide/favorites/{{user.id}}">Decide From Favorites</a></li>
             </ul>
             <p class="navbar-text navbar-right" ng-show="!user">Hello, Guest</p>
