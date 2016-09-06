@@ -378,6 +378,7 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
   }
 
   $scope.view.addNewFave = function(name, image, address1, address2, yelp_url) {
+    console.log("Adding Fave");
     var address2Array = address2.split(' ');
     var city = address2Array[0].substring(0, address2Array[0].length - 1);
     var name = name;
@@ -387,11 +388,12 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
     var zip = address2Array[2];
     var yelp_url = yelp_url;
     DashboardService.addNewFave($routeParams.id, name, image, address_line_1, city, state, zip, yelp_url);
-    // $window.location.reload();
-    $scope.view.searchFaveResults = false;
+    $window.location.reload();
+    // $scope.view.searchFaveResults = false;
   }
 
   $scope.view.addNewFaveTwo = function(name, image, address1, address2, address3, yelp_url) {
+    console.log("Adding Fave Two");
     var address3Array = address3.split(' ');
     var city = address3Array[0].substring(0, address3Array[0].length - 1);
     var name = name;
@@ -402,8 +404,8 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
     var zip = address3Array[2];
     var yelp_url = yelp_url;
     DashboardService.addNewFaveTwo($routeParams.id, name, image, address_line_1, address_line_2, city, state, zip, yelp_url);
-    // $window.location.reload();
-    $scope.view.searchFaveResults = false;
+    $window.location.reload();
+    // $scope.view.searchFaveResults = false;
   }
 
 }]);

@@ -6,7 +6,7 @@
       <h3 ng-show="view.userPlaces.length === 0">
         Looks like you haven't been anywhere yet! <a href="#/decide">Click here to search</a> and find somewhere to go!
       </h3>
-      <ul class="list-group center-block row" ng-repeat="place in view.userPlaces" ng-if="$index % 3 === 0">
+      <ul class="list-group center-block row" ng-repeat="place in view.userPlaces" ng-if="$index % 4 === 0">
         <div class="dashPlaces col-xs-3">
           <li><h4><strong><i class="fa fa-star" aria-hidden="true" ng-show="view.userPlaces[$index].is_favorite"></i> {{view.userPlaces[$index].name}}</strong></h4></li>
           <li><img ng-src="{{view.userPlaces[$index].image}}" alt="Restaurant"></li>
@@ -50,7 +50,7 @@
       <h3 ng-show="view.userFaves.length === 0">
         Looks like you don't have any favorites yet! <a href="#/decide">Click here to search</a> and find somewhere to go!
       </h3>
-      <ul class="list-group center-block row" ng-repeat="place in view.userFaves" ng-if="$index % 3 === 0">
+      <ul class="list-group center-block row" ng-repeat="place in view.userFaves" ng-if="$index % 4 === 0">
         <div class="dashPlaces col-xs-3">
           <li><h4><strong>{{view.userFaves[$index].name}}</strong></h4></li>
           <li><img ng-src="{{view.userFaves[$index].image}}" alt="Restaurant"></li>
