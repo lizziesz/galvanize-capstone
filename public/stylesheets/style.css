@@ -30,6 +30,13 @@ header {
     z-index: 9999;
 }
 
+/*Home and About Page*/
+
+.homeText {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 /*Form Styling*/
 
 .radioRow {
