@@ -2,7 +2,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-app.controller("NavigationController", ['$scope', '$http', '$window', function($scope, $http, $window) {
+app.controller("NavigationController", ['$scope', '$window', function($scope, $window) {
 
   $scope.view = {};
 
@@ -244,7 +244,7 @@ app.controller("DecisionController", ['$scope', 'YelpAPIService', '$http', '$loc
 
 }]);
 
-app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$location', '$window', function($scope, $http, SignUpService, $location, $window) {
+app.controller("SignUpController", ['$scope', 'SignUpService', '$location', '$window', function($scope, SignUpService, $location, $window) {
   $scope.view = {};
 
   SignUpService.getUsers().then(function(data) {
@@ -281,7 +281,7 @@ app.controller("SignUpController", ['$scope', '$http', 'SignUpService', '$locati
 
 }]);
 
-app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'DashboardService', '$window', function($scope, $http, $routeParams, DashboardService, $window) {
+app.controller("DashboardController", ['$scope', '$routeParams', 'DashboardService', '$window', function($scope, $routeParams, DashboardService, $window) {
   $scope.view = {};
 
   DashboardService.getPlaces($routeParams.id).then(function(data) {
@@ -342,7 +342,7 @@ app.controller("DashboardController", ['$scope', '$http', '$routeParams', 'Dashb
 
 }]);
 
-app.controller("FavoriteController", ['$scope', '$http', '$routeParams', 'FavoriteService', function($scope, $http, $routeParams, FavoriteService) {
+app.controller("FavoriteController", ['$scope', '$routeParams', 'FavoriteService', function($scope, $routeParams, FavoriteService) {
   $scope.view = {};
   $scope.view.faveRestaurants = [];
   FavoriteService.getFaves($routeParams.id).then(function(data) {
