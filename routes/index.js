@@ -12,12 +12,8 @@ var token;
 var errors;
 
 function protect(req,res,next) {
-  // var decoded = jwtDecode(req.token);
-  // console.log(decoded);
-  // console.log("REQ.JWT: " + req.token);
   jwt.verify(req.token, process.env.SECRET, function (err,decoded) {
     if (!err) {
-
       next();
     } else {
       res.status(400).send('Bad Request');
@@ -35,10 +31,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/yelp/:city/:state/:radius/:category', function(req, res, next) {
-  // console.log("STATE" + req.params.state);
-  console.log("YELP1");
   var city = req.params.city;
-  console.log(city);
   var state = req.params.state;
   var radius = req.params.radius;
   if(req.params.category === 'undefined') {
@@ -48,7 +41,6 @@ router.get('/api/yelp/:city/:state/:radius/:category', function(req, res, next) 
     category = req.params.category;
   }
 
-  // var location = city + '+' + state;
   var client = yelp.createClient({
     oauth: {
       "consumer_key": process.env.oauth_consumer_key,
@@ -74,15 +66,11 @@ router.get('/api/yelp/:city/:state/:radius/:category', function(req, res, next) 
     // ...
   }).catch(function(error) {
     console.log("ERROR" + error);
-    console.log(city);
   })
 });
 
 router.get('/api/yelp2/:city/:state/:category', function(req, res, next) {
-  // console.log("STATE" + req.params.state);
-  console.log("YELP2");
   var city = req.params.city;
-  console.log(city);
   var state = req.params.state;
   if(req.params.category === 'undefined') {
     category = '';
@@ -91,7 +79,6 @@ router.get('/api/yelp2/:city/:state/:category', function(req, res, next) {
     category = req.params.category;
   }
 
-  // var location = city + '+' + state;
   var client = yelp.createClient({
     oauth: {
       "consumer_key": process.env.oauth_consumer_key,
@@ -116,15 +103,11 @@ router.get('/api/yelp2/:city/:state/:category', function(req, res, next) {
     // ...
   }).catch(function(error) {
     console.log("ERROR" + error);
-    console.log(city);
   })
 });
 
 router.get('/api/yelp3/:city/:state/:latitude/:longitude/:radius/:category', function(req, res, next) {
-  // console.log("STATE" + req.params.state);
-  console.log("YELP3");
   var city = req.params.city;
-  console.log(city);
   var state = req.params.state;
   var latitude = req.params.latitude;
   var longitude = req.params.longitude;
@@ -136,7 +119,6 @@ router.get('/api/yelp3/:city/:state/:latitude/:longitude/:radius/:category', fun
     category = req.params.category;
   }
 
-  // var location = city + '+' + state;
   var client = yelp.createClient({
     oauth: {
       "consumer_key": process.env.oauth_consumer_key,
@@ -163,15 +145,11 @@ router.get('/api/yelp3/:city/:state/:latitude/:longitude/:radius/:category', fun
     // ...
   }).catch(function(error) {
     console.log("ERROR" + error);
-    console.log(city);
   })
 });
 
 router.get('/api/yelp4/:city/:state/:latitude/:longitude/:category', function(req, res, next) {
-  // console.log("STATE" + req.params.state);
-  console.log("YELP4");
   var city = req.params.city;
-  console.log(city);
   var state = req.params.state;
   var latitude = req.params.latitude;
   var longitude = req.params.longitude;
@@ -182,7 +160,6 @@ router.get('/api/yelp4/:city/:state/:latitude/:longitude/:category', function(re
     category = req.params.category;
   }
 
-  // var location = city + '+' + state;
   var client = yelp.createClient({
     oauth: {
       "consumer_key": process.env.oauth_consumer_key,
@@ -208,17 +185,14 @@ router.get('/api/yelp4/:city/:state/:latitude/:longitude/:category', function(re
     // ...
   }).catch(function(error) {
     console.log("ERROR" + error);
-    console.log(city);
   })
 });
 
 router.get('/api/yelpfave/:name/:city/:state', function(req, res, next) {
-  console.log("YELP5");
   var name = req.params.name;
   var city = req.params.city;
-  console.log(name);
   var state = req.params.state;
-  // var location = city + '+' + state;
+
   var client = yelp.createClient({
     oauth: {
       "consumer_key": process.env.oauth_consumer_key,
@@ -242,12 +216,10 @@ router.get('/api/yelpfave/:name/:city/:state', function(req, res, next) {
     // ...
   }).catch(function(error) {
     console.log("ERROR" + error);
-    console.log(city);
   })
 });
 
 router.get('/api/users', function(req, res, next) {
-  // res.json("['hi', 'ivy']")
   knex('users').then(function(data) {
     res.json(data);
   });
@@ -275,7 +247,6 @@ router.post('/api/signup', function(req, res, next) {
         }).returning("*")
         .then(function(user) {
           token = jwt.sign({ id: user[0].id, username: user[0].username, is_admin: user[0].is_admin, first_name: user[0].first_name}, process.env.SECRET);
-          console.log(token);
           res.json({token:token});
         }).catch(function(err) {
           console.log(err);
@@ -298,9 +269,7 @@ router.post('/api/signin', function(req, res, next) {
     else if(bcrypt.compareSync(req.body.password, data.password)) {
       token = jwt.sign({ id: data.id, username: data.username, is_admin: data.is_admin, first_name: data.first_name }, process.env.SECRET);
       res.json({token:token});
-      console.log("token token: " + token);
     } else {
-      console.log('username or password is incorrect');
       res.json({errors: 'username or password is incorrect'});
     }
   }).catch(function(err) {
@@ -321,7 +290,6 @@ router.post('/api/places', function(req, res, next) {
     user_id: req.body.user_id
   })
   .then(function(data) {
-    console.log(data);
     for(var i=0; i<data.length; i++) {
       if(data[i].yelp_url === req.body.yelp_url) {
         return "Already there";
@@ -349,7 +317,6 @@ router.post('/api/placestwo', function(req, res, next) {
     user_id: req.body.user_id
   })
   .then(function(data) {
-    console.log(data);
     for(var i=0; i<data.length; i++) {
       if(data[i].yelp_url === req.body.yelp_url) {
         return "Already there";
@@ -378,7 +345,6 @@ router.post('/api/placesfave', function(req, res, next) {
     user_id: req.body.user_id
   })
   .then(function(data) {
-    console.log(data);
     for(var i=0; i<data.length; i++) {
       if(data[i].yelp_url === req.body.yelp_url) {
         return "Already there";
@@ -406,7 +372,6 @@ router.post('/api/placestwofave', function(req, res, next) {
     user_id: req.body.user_id
   })
   .then(function(data) {
-    console.log(data);
     for(var i=0; i<data.length; i++) {
       if(data[i].yelp_url === req.body.yelp_url) {
         return "Already there";
@@ -440,7 +405,6 @@ router.get('/api/places/:id', function(req, res, next) {
 });
 
 router.post('/api/favorites/:id', function(req, res, next) {
-  console.log(req.params.id);
   knex('places')
   .where({
     id: req.params.id
