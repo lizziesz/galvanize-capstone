@@ -5,8 +5,6 @@ body {
   min-height: 100vh;
   flex-direction: column;
   font-family: 'Raleway', sans-serif;
-  /*font-family: 'Cabin', sans-serif;*/
-  /*font-family: 'Josefin Slab', serif;*/
 }
 
 h1 {
@@ -16,8 +14,6 @@ h1 {
 main {
   flex: 1 0 auto;
 }
-
-
 
 a {
   color: #162252;
@@ -68,8 +64,6 @@ input, textarea, input.ng-pristine{
   font: {
     size: 1em;
     family: 'Raleway', sans-serif;
-    /*font-family: 'Cabin', sans-serif;*/
-    /*font-family: 'Josefin Slab', serif;*/
   }
 }
 
@@ -93,8 +87,6 @@ input:focus, textarea:focus, select:hover, select:focus, input.ng-pristine:focus
   font: {
     size: 1em;
     family: 'Raleway', sans-serif;
-    /*font-family: 'Cabin', sans-serif;*/
-    /*font-family: 'Josefin Slab', serif;*/
   }
 }
 
@@ -274,6 +266,8 @@ footer {
   color: white;
   background: url('../images/footer_lodyas.png') repeat 0 0;
 }
+
+/*Custom Button Styling*/
 
 .btn-xl {
     padding: 18px 28px;

@@ -35,6 +35,6 @@ app.run(function($rootScope, $location) {
 
   if (localStorage.jwt) {
     $rootScope.user = jwt_decode(localStorage.jwt);
-    console.log($rootScope.user);
   }
+
 });
