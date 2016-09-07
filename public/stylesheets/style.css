@@ -17,17 +17,7 @@ main {
   flex: 1 0 auto;
 }
 
-.btn-xl {
-    padding: 18px 28px;
-    font-size: 22px;
-    border-radius: 8px;
-}
 
-.btn-md {
-  padding: 8px 18px;
-  font-size: 20px;
-  border-radius: 8px;
-}
 
 a {
   color: #162252;
@@ -283,4 +273,16 @@ footer {
   padding-top: 20px;
   color: white;
   background: url('../images/footer_lodyas.png') repeat 0 0;
+}
+
+.btn-xl {
+    padding: 18px 28px;
+    font-size: 22px;
+    border-radius: 8px;
+}
+
+.btn-md {
+  padding: 8px 18px;
+  font-size: 20px;
+  border-radius: 8px;
 }

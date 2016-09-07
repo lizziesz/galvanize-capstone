@@ -4,7 +4,7 @@
       <div ng-show="!view.faveResults">
         <h1 class="text-center">Search From Your Favorites!</h1>
         <p class="text-center">Want to go somewhere you know you'll love? Search exclusively from your favorites!</p>
-        <button class="btn btn-primary center-block" ng-click="view.searchFavorites()" ng-show="view.favoritePlaces.length > 0">Where Should I Eat?</button>
+        <button class="submitButton center-block" ng-click="view.searchFavorites()" ng-show="view.favoritePlaces.length > 0">Where Should I Eat?</button>
       </div>
       <div ng-show="view.favoritePlaces.length === 0">
         <h3 class="text-center">Looks like you don't have any favorites to search from! <a href="#/decide">Click here to search all places</a> and find somewhere to go! </h3>
@@ -20,7 +20,7 @@
           <a href="https://www.google.com/maps/dir//{{result.address_line_1}} {{result.city}} {{result.state}} {{result.zip}}" target="_blank"><p class="text-center">Get Directions<p/></a>
           <p></p>
           <a href="{{result.yelp_url}}" target="_blank"><p class="text-center">Go to the Yelp page!</p></a>
-          <button class="btn btn-primary center-block" type="submit" ng-click="view.searchFavesAgain()" ng-show="view.favoritePlaces.length > 1">Not satisfied? Try again!
+          <button class="submitButton center-block" type="submit" ng-click="view.searchFavesAgain()" ng-show="view.favoritePlaces.length > 1">Not satisfied? Try again!
           </button>
           <p></p>
           <p class="text-center">Results powered by: <span><img src="./images/yelp/yelp-logo-small.png" alt="Yelp"></span></p>
