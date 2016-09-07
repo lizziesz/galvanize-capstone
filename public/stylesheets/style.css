@@ -23,6 +23,12 @@ main {
     border-radius: 8px;
 }
 
+.btn-md {
+  padding: 8px 18px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
 a {
   color: #162252;
 }
