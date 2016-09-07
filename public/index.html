@@ -45,6 +45,7 @@
               <li><a href="#/about">About</a></li>
               <li><a href="#/decide">Decide for Me!</a></li>
               <li ng-show="user"><a href="#/decide/favorites/{{user.id}}">Decide From Favorites</a></li>
+              <li ng-show="!user"><a href="#/favorites">Decide From Favorites</a></li>
             </ul>
             <p class="navbar-text navbar-right" ng-show="!user">Hello, Guest</p>
             <a href="#/dashboard/{{user.id}}"><p class="navbar-text navbar-right" ng-show="user">Dashboard</p></a>

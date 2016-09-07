@@ -29,6 +29,9 @@ app.config(function($routeProvider, $httpProvider){
       templateUrl: 'views/searchfave.html',
       controller: 'FavoriteController'
     })
+    .when('/favorites', {
+      templateUrl: 'views/favenouser.html'
+    })
 });
 
 app.run(function($rootScope, $location) {
