@@ -6,24 +6,24 @@
   </div>
 
   <div ng-repeat="result in view.restaurants">
-    <h2 class="text-center">{{result.name}}</h2>
+    <h2 class="text-center"><strong>{{result.name}}</strong></h2>
     <img ng-src="{{result.image_url}}" alt="restaurant image" class="center-block">
     <br>
     <img ng-src="{{result.rating_img_url}}" alt="rating" class="center-block">
     <div class="text-center" ng-repeat="category in result.categories">
-      <h5>{{category[0]}}</h5>
+      <h5><strong>{{category[0]}}</strong></h5>
     </div>
-    <p class="text-center" ng-show="!result.location.display_address[2]"><strong>{{result.location.display_address[0]}}</strong></p>
-    <p class="text-center" ng-show="!result.location.display_address[2]"><strong>{{result.location.display_address[1]}}</strong></p>
-    <p class="text-center" ng-show="result.location.display_address[2]"><strong>{{result.location.display_address[0]}} {{result.location.display_address[1]}}</strong></p>
-    <p class="text-center"><strong>{{result.location.display_address[2]}}</strong></p>
-    <p class="text-center"><strong>{{result.location.display_address[3]}}</strong></p>
-    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[3]}}" target="_blank" ng-if="result.location.display_address[3]"><p class="text-center">Get directions!</p></a>
-    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[2]}}" target="_blank" ng-if="result.location.display_address[2] && !result.location.display_address[3]"><p class="text-center">Get directions!</p></a>
-    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[1]}}" target="_blank" ng-if="!result.location.display_address[2]"><p class="text-center">Get directions!</p></a>
+    <h4 class="text-center" ng-show="!result.location.display_address[2]"><strong>{{result.location.display_address[0]}}</strong></h4>
+    <h4 class="text-center" ng-show="!result.location.display_address[2]"><strong>{{result.location.display_address[1]}}</strong></h4>
+    <h4 class="text-center" ng-show="result.location.display_address[2]"><strong>{{result.location.display_address[0]}} {{result.location.display_address[1]}}</strong></h4>
+    <h4 class="text-center"><strong>{{result.location.display_address[2]}}</strong></h4>
+    <h4 class="text-center"><strong>{{result.location.display_address[3]}}</strong></h4>
+    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[3]}}" target="_blank" ng-if="result.location.display_address[3]"><button class="btn btn-link btn-md center-block">Get directions!</button></a>
+    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[2]}}" target="_blank" ng-if="result.location.display_address[2] && !result.location.display_address[3]"><button class="btn btn-link btn-md center-block">Get directions!</button></a>
+    <a href="https://www.google.com/maps/dir//{{result.location.display_address[0]}} {{result.location.display_address[1]}}" target="_blank" ng-if="!result.location.display_address[2]"><button class="btn btn-link btn-md center-block">Get directions!</button></a>
     <p></p>
     <p class="text-center"><strong>"{{result.snippet_text}}"</strong></p>
-    <a href="{{result.url}}" target="_blank"><p class="text-center">Read more reviews on Yelp!</p></a>
+    <a href="{{result.url}}" target="_blank"><button class="btn btn-link btn-md center-block">Read more reviews on Yelp!</button></a>
     <button class="btn btn-success center-block"  ng-if="!result.location.display_address[2]" ng-click="view.addRestaurant(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.url)" ng-show="user">I'm going here!</button>
     <button class="btn btn-success center-block"  ng-if="result.location.display_address[2] && !result.location.display_address[3]" ng-click="view.addRestaurantTwo(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.location.display_address[2], result.url)" ng-show="user">I'm going here!</button>
     <button class="btn btn-success center-block"  ng-if="result.location.display_address[3]" ng-click="view.addRestaurantTwo(user.id, result.name, result.image_url, result.location.display_address[0], result.location.display_address[1], result.location.display_address[3], result.url)" ng-show="user">I'm going here!</button>
@@ -31,7 +31,7 @@
     <button class="submitButton center-block" type="submit" ng-click="view.searchYelpAgain()" ng-show="view.yelpData.length > 1">Not satisfied? Try again!
     </button>
     <br>
-    <p class="text-center">Results powered by: <span><img src="./images/yelp/yelp-logo-small.png" alt="Yelp"></span></p>
+    <p class="text-center"><strong>Results powered by: </strong><span><img src="./images/yelp/yelp-logo-small.png" alt="Yelp"></span></p>
     <button class="btn btn-link center-block" ng-click="view.showResults = !view.showResults; view.inputLocation = !view.inputLocation">Start Over</button>
   </div>
 

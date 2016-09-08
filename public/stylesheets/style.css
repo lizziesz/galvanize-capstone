@@ -15,7 +15,7 @@ main {
   flex: 1 0 auto;
 }
 
-a {
+a, .btn-link {
   color: #162252;
 }
 
