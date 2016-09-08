@@ -1,11 +1,11 @@
 <div class="dashBackground">
   <div class="container-fluid">
-    <h2 class="text-center">{{user.first_name}}'s Dashboard</h2>
-    <h4 class="text-center dashHeading" ng-click="view.showPlaces = !view.showPlaces"><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show=!view.showPlaces></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.showPlaces"></i> Places I've Been</h4>
+    <h2 class="text-center"><strong>{{user.first_name}}'s Dashboard</strong></h2>
+    <h4 class="text-center dashHeading" ng-click="view.showPlaces = !view.showPlaces"><strong><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show=!view.showPlaces></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.showPlaces"></i> Places I've Been</strong></h4>
     <div class="dashGroup text-center" ng-show="view.showPlaces">
-      <h3 ng-show="view.userPlaces.length === 0">
+      <h3 ng-show="view.userPlaces.length === 0"><strong>
         Looks like you haven't been anywhere yet! <a href="#/decide">Click here to search</a> and find somewhere to go!
-      </h3>
+      </strong></h3>
       <ul class="list-group center-block row" ng-repeat="place in view.userPlaces" ng-if="$index % 4 === 0">
         <div class="dashPlaces col-xs-3">
           <li><h4><strong><i class="fa fa-star" aria-hidden="true" ng-show="view.userPlaces[$index].is_favorite"></i> {{view.userPlaces[$index].name}}</strong></h4></li>
@@ -45,11 +45,11 @@
         </div>
       </ul>
     </div>
-    <h4 class="text-center dashHeading" ng-click="view.showFavorites = !view.showFavorites"><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show="!view.showFavorites"></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.showFavorites"></i> Favorites</h4>
+    <h4 class="text-center dashHeading" ng-click="view.showFavorites = !view.showFavorites"><strong><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show="!view.showFavorites"></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.showFavorites"></i> Favorites</strong></h4>
     <div class="dashGroup text-center" ng-show="view.showFavorites">
-      <h3 ng-show="view.userFaves.length === 0">
+      <h3 ng-show="view.userFaves.length === 0"><strong>
         Looks like you don't have any favorites yet! <a href="#/decide">Click here to search</a> and find somewhere to go!
-      </h3>
+      </strong></h3>
       <ul class="list-group center-block row" ng-repeat="place in view.userFaves" ng-if="$index % 4 === 0">
         <div class="dashPlaces col-xs-3">
           <li><h4><strong>{{view.userFaves[$index].name}}</strong></h4></li>
@@ -89,7 +89,7 @@
         </div>
       </ul>
     </div>
-    <h4 class="text-center dashHeading" ng-click="view.addFaveShow = !view.addFaveShow; view.addFaveForm = !view.addFaveForm"><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show=!view.addFaveShow></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.addFaveShow"></i> Add To Favorites</h4>
+    <h4 class="text-center dashHeading" ng-click="view.addFaveShow = !view.addFaveShow; view.addFaveForm = !view.addFaveForm"><strong><i class="fa fa-plus fa-1x" aria-hidden="true" ng-show=!view.addFaveShow></i><i class="fa fa-minus fa-1x" aria-hidden="true" ng-show="view.addFaveShow"></i> Add To Favorites</strong></h4>
     <cp-add-fave-form ng-show="view.addFaveShow && view.addFaveForm"></cp-add-fave-form>
     <cp-fave-results ng-show="view.addFaveShow && view.searchFaveResults"></cp-fave-results>
   </div>
