@@ -7,3 +7,12 @@
     padding-top: 50px;
   }
 }
+
+@media(min-width: 1400px) {
+  .background, .searchBackground, .faveBackground, .dashBackground, .signUpBackground, .signInBackground, .aboutBackground {
+    min-height: 86vh;
+  }
+  .searchContent {
+    height: 86vh;
+  }
+}
